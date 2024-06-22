@@ -1,36 +1,36 @@
 const INFO = {
 	main: {
-		title: "Reactfolio by truethari",
-		name: "Tharindu N.",
-		email: "mail@tharindu.dev",
+		title: "Reactfolio by Lianrui",
+		name: "Lianrui Sun",
+		email: "lianruisun1020@gmail.com",
 		logo: "../logo.png",
 	},
 
 	socials: {
 		twitter: "https://twitter.com/",
-		github: "https://github.com/",
-		linkedin: "https://linkedin.com/",
+		github: "https://github.com/LianruiSun",
+		linkedin: "https://www.linkedin.com/in/lianrui-sun-5638392b4/",
 		instagram: "https://instagram.com/",
 		stackoverflow: "https://stackoverflow.com/",
 		facebook: "https://facebook.com/",
 	},
 
 	homepage: {
-		title: "Full-stack web and mobile app developer, and amateur astronaut.",
+		title: "Full-stack web and software developer, and amateur game developer.",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies. I enjoy solving complex problems and learning new skills. I am passionate about creating high-quality code that follows best practices and industry standards. I am always looking for new challenges and opportunities to grow as a developer.",
+			"",
 	},
 
 	about: {
-		title: "I’m Tharindu N. I live in Sri Lanka, where I design the future.",
+		title: "I’m Lianrui Sun. I live in Boston, where I improve the world.",
 		description:
-			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to. If you're interested in any of the projects I've worked on, please feel free to check out the code and suggest any improvements or enhancements you might have in mind. Collaborating with others is a great way to learn and grow, and I'm always open to new ideas and feedback.",
+			"During my time in college, I had a wide range of program experiences across many fields. Many of the projects solved real-world problems and facilitated and promoted development. In the process, I keep learning and improving myself by gaining more knowledge from different fields and people. Feel free to contact me for any communication, I will remain positive and open.",
 	},
 
 	articles: {
-		title: "I'm passionate about pushing the boundaries of what's possible and inspiring the next generation of innovators.",
+		title: "I am passionate about exploring the boundaries of knowledge, and using my knowledge and skills to bring innovation.",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
+			"\"To be a good professional engineer, always start to study late for exams because it teaches you how to manage time and tackle emergencies.\"",
 	},
 
 	projects: [
@@ -44,39 +44,39 @@ const INFO = {
 		},
 
 		{
-			title: "Project 2",
+			title: "WPI healthy classroom website",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+				"A web-based dashboard to monitor classroom environments using Awair Omni sensors, in collaboration with Professor Shichao Liu.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/r/r.png",
+			linkText: "View Project",
+			link: "https://lianruisun.shinyapps.io/WPIClassroomDashboard/",
+		},
+
+		{
+			title: "Hospital Desktop Application Development",
+			description:
+				"A desktop application cooperated with Mass General Brigham using Java, Scenebuilder, CSS, and MySQL.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
+			linkText: "View Project",
+			link: "https://github.com/orgs/CS3733-D23-Team-N/ ",
+		},
+
+		{
+			title: "Personal Game development (2022)",
+			description:
+				"A platformer 2D game with fighting elements using Unity and C#.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
+			linkText: "View Project",
+			link: "https://darrrrrrrrrcy.itch.io/darcys-first-game",
+		},
+
+		{
+			title: "Dianping Web Crawler (2022)",
+			description:
+				"A web crawler using Python and BeautifulSoup to extract user data and reviews from https://www.dianping.com/, analyzing user locations and average consumption ratings, and shared the information with the local restaurant.",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",
-			linkText: "View Project",
-			link: "https://github.com",
-		},
-
-		{
-			title: "Project 3",
-			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/html/html.png",
-			linkText: "View Project",
-			link: "https://github.com",
-		},
-
-		{
-			title: "Project 4",
-			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "View Project",
-			link: "https://github.com",
-		},
-
-		{
-			title: "Project 5",
-			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
-			linkText: "View Project",
-			link: "https://github.com",
+			linkText: "",
+			link: "",
 		},
 	],
 };

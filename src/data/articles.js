@@ -2,15 +2,14 @@ import React from "react";
 
 function article_1() {
 	return {
-		date: "7 May 2023",
-		title: "The Benefits of Cloud Computing",
+		date: "26 Jan 2024",
+		title: "Developing a Rating Dashboard of Healthy Classrooms",
 		description:
-			"Cloud computing offers a range of benefits, including cost savings and increased flexibility. Find out why more businesses are turning to the cloud.",
+			"This study addresses the significant gap in understanding the impact of indoor classroom environments on student learning by developing a dynamic rating database for assessing classroom healthiness.",
 		keywords: [
-			"The Benefits of Cloud Computing",
-			"Tharindu",
-			"Tharindu N",
-			"Tharindu Nayanajith",
+			"WPI",
+			"Lianrui",
+			"Lianrui Sun",
 		],
 		style: `
 				.article-content {
@@ -27,9 +26,9 @@ function article_1() {
 		body: (
 			<React.Fragment>
 				<div className="article-content">
-					<div className="paragraph">Content of article 1</div>
+					<a href="https://digital.wpi.edu/concern/student_works/jh343x65c?locale=de">Link to the article at WPI</a>
 					<img
-						src="https://picsum.photos/200/300"
+						src="https://digital.wpi.edu/downloads/th83m369r?file=thumbnail"
 						alt="random"
 						className="randImage"
 					/>
@@ -39,27 +38,6 @@ function article_1() {
 	};
 }
 
-function article_2() {
-	return {
-		date: "7 May 2023",
-		title: "Artificial Intelligence in Healthcare",
-		description:
-			"AI is transforming the healthcare industry, from improving patient outcomes to streamlining operations. Discover the latest applications of this game-changing technology.",
-		style: ``,
-		keywords: [
-			"Artificial Intelligence in Healthcare",
-			"Tharindu",
-			"Tharindu N",
-			"Tharindu Nayanajith",
-		],
-		body: (
-			<React.Fragment>
-				<h1>Content of article 2</h1>
-			</React.Fragment>
-		),
-	};
-}
-
-const myArticles = [article_1, article_2];
+const myArticles = [article_1];
 
 export default myArticles;
