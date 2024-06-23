@@ -35,12 +35,12 @@ const INFO = {
 
 	projects: [
 		{
-			title: "Project 1",
+			title: "GenAI from Images to Text and Audio",
 			description:
-				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+				"Develop an Android app to recognize common objects and describe environment for VIB people",
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "View Project",
-			link: "https://github.com",
+			link: "",
 		},
 
 		{
