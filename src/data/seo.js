@@ -2,37 +2,37 @@ const SEO = [
 	{
 		page: "home",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
+			"",
+		keywords: ["Lianrui", "Lianrui Sun", "darrrrrrrrrcy"],
 	},
 
 	{
 		page: "about",
 		description:
-			"I am a backend developer with expertise in Node.js. I have experience in building scalable, secure and reliable web applications using various frameworks and technologies.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
-	},
+			"During my time in college, I had a wide range of program experiences across many fields. Many of the projects solved real-world problems and facilitated and promoted development.",
+		keywords: ["Lianrui", "Lianrui Sun", "darrrrrrrrrcy"],
+		},
 
 	{
 		page: "articles",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
-	},
+			"I am passionate about exploring the boundaries of knowledge, and using my knowledge and skills to bring innovation.",
+		keywords: ["Lianrui", "Lianrui Sun", "darrrrrrrrrcy"],
+		},
 
 	{
 		page: "projects",
 		description:
-			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
-	},
+			"Within the last few years, I have completed different projects in different areas. These projects have not only helped the world but also enhanced my learning and knowledge.",
+		keywords: ["Lianrui", "Lianrui Sun", "darrrrrrrrrcy"],
+		},
 
 	{
 		page: "contact",
 		description:
 			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
-		keywords: ["Tharindu", "Tharindu N", "Tharindu Nayanajith"],
-	},
+		keywords: ["Lianrui", "Lianrui Sun", "darrrrrrrrrcy"],
+		},
 ];
 
 export default SEO;
