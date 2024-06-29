@@ -4,6 +4,8 @@ const INFO = {
 		name: "Lianrui Sun",
 		email: "lianruisun1020@gmail.com",
 		logo: "../logo.png",
+		popup: "../WPI.png",
+		WPI: "../WPI_logo.png",
 	},
 
 	socials: {

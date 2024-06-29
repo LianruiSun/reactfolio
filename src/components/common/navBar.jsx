@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import "./styles/navBar.css";
+import Popup from './popup';
+
 
 const NavBar = (props) => {
 	const { active } = props;
@@ -59,7 +61,11 @@ const NavBar = (props) => {
 							</li>
 						</ul>
 					</div>
+					<div className="pop-up">
+						<Popup />
+					</div>
 				</nav>
+
 			</div>
 		</React.Fragment>
 	);

@@ -1,0 +1,50 @@
+import React from 'react';
+import Popup from 'reactjs-popup';
+import Draggable from 'react-draggable';
+import './styles/popup.css';
+import INFO from "../../data/user";
+import useDynamoDBData from "../../dynamoDB/useDynamoDBData";
+import CourseTable from "./courseTable";
+
+const PopupButton = () => {
+    const data = useDynamoDBData();
+
+    return (
+        <Popup
+            trigger={
+                <button className="circle-button">
+                    <img src={INFO.main.popup} alt="Share" className="circle-button-image" />
+                </button>
+            }
+            modal
+            closeOnDocumentClick
+            contentStyle={{ background: 'transparent', border: 'none', padding: 0 }}
+        >
+            {close => (
+                <Draggable>
+                    <div className="popup-content">
+                        <div className="redboard">
+                            <h2>Education</h2>
+                        </div>
+                        <div className="whiteboard">
+                            <div className="header-row">
+                                <img src={INFO.main.WPI} alt="WPI Logo" className="WPI-logo" />
+                                <h3>Worcester Polytechnic Institute</h3>
+                            </div>
+                            <h4>Bachelors</h4>
+                            <p>
+                                Aug 2021 - May 2025<br />
+                                Major in Computer Science (BS)<br />
+                                <strong>Department GPA:</strong> 3.88<br />
+                                <strong>Cumulative GPA:</strong> 3.73
+                            </p>
+                        </div>
+                        <CourseTable data={data} />
+                    </div>
+                </Draggable>
+            )}
+        </Popup>
+    );
+}
+
+export default PopupButton;
