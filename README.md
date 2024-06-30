@@ -3,6 +3,7 @@
 Welcome to the personal version of Reactfolio. This version extends the original capabilities of Reactfolio with additional features such as educational popups, integration with AWS DynamoDB, and deployment configurations for both AWS Lambda and Netlify.
 
 Link: https://lianruisun.com/
+
 AWSLambda URL: https://2vap7j7grzhi3z5blx3gfpo7zy0nwwli.lambda-url.us-east-2.on.aws/
 
 ## Features
@@ -40,4 +41,3 @@ In the DynamoDB integration file, there are two methods available for connecting
 
 4. Running Locally
    npm start
-
