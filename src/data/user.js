@@ -20,7 +20,7 @@ const INFO = {
 	homepage: {
 		title: "Full-stack web and software developer, and amateur game developer.",
 		description:
-			"",
+			"Hello! I'm Lianrui Sun, a Bachelor of Science student in Computer Science at Worcester Polytechnic Institute, graduating in 2025. I am familiar with several programming languages including Java, Python, JavaScript, C/C++, and have foundation in Linux environments. Additionally, I have hands-on experience with full-stack development using technologies like React, FastAPI, and MySQL. My goal is to continue to learn new techniques and solidify my skills, and use my knowledge to change the world.",
 	},
 
 	about: {

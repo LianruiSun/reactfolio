@@ -3,11 +3,12 @@ import Popup from 'reactjs-popup';
 import Draggable from 'react-draggable';
 import './styles/popup.css';
 import INFO from "../../data/user";
-import useDynamoDBData from "../../dynamoDB/useDynamoDBData";
+// import useDynamoDBData from "../../dynamoDB/useDynamoDBData";
 import CourseTable from "./courseTable";
+import useFetchData from "../../dynamoDB/useFetchData";
 
 const PopupButton = () => {
-    const data = useDynamoDBData();
+    const { data, loading, error } = useFetchData("https://2vap7j7grzhi3z5blx3gfpo7zy0nwwli.lambda-url.us-east-2.on.aws/");
 
     return (
         <Popup
@@ -39,7 +40,13 @@ const PopupButton = () => {
                                 <strong>Cumulative GPA:</strong> 3.73
                             </p>
                         </div>
-                        <CourseTable data={data} />
+                        {loading ? (
+                            <p>Loading...</p>
+                        ) : error ? (
+                            <p>Error loading courses: {error.message}</p>
+                        ) : (
+                            <CourseTable data={data} />
+                        )}
                     </div>
                 </Draggable>
             )}

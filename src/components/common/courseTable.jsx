@@ -21,7 +21,8 @@ const CourseTable = ({ data }) => {
         ))}
       </tbody>
     </table>
-    <h5>Connected by DynamoDB</h5>
+    <h5>Connected by FastAPI on Lambda<br />
+    Stored on DynamoDB</h5>
     </div>
   );
 };
