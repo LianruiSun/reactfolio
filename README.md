@@ -23,21 +23,27 @@ Reactfolio template and more instruction:
 ### Prerequisites
 
 You will need `Node.js` and `git` installed on your machine. Optionally, for deploying and testing the AWS and Netlify configurations, AWS CLI and Netlify CLI tools should be configured appropriately.
+
 In the DynamoDB integration file, there are two methods available for connecting to DynamoDB:
+
     1. useDynamoDBData.js: This method establishes a direct API connection to DynamoDB. However, since the API key is not publicly accessible, this function is not utilized in this context.
+    
     2. useFetchData.js: This method retrieves data using the AWS Lambda URL through FastAPI. For additional details about my FastAPI deployment, please visit: [My Portfolio FastAPI Deployment](https://github.com/LianruiSun/portfolio-fastAPI).
 
 ### Installation
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourgithub/reactfolio-enhanced.git
+   git clone https://github.com/LianruiSun/reactfolio.git
 
 2. Navigate to the project directory:
+   ```bash
    cd reactfolio-enhanced
 
 3. Install the dependencies:
+   ```bash
    npm install
 
 4. Running Locally
+   ```bash
    npm start
