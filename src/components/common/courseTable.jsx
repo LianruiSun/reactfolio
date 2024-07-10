@@ -14,8 +14,8 @@ const CourseTable = ({ data }) => {
       <tbody>
         {data.map((course, index) => (
           <tr key={index}>
-            <td>{course.ID}</td>
-            <td>{course.Name}</td>
+            <td>{course.id}</td>
+            <td>{course.Description}</td>
             <td>{course.Grade}</td>
           </tr>
         ))}
