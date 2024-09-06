@@ -14,15 +14,15 @@ const CourseTable = ({ data }) => {
       <tbody>
         {data.map((course, index) => (
           <tr key={index}>
-            <td>{course.id}</td>
-            <td>{course.Description}</td>
+            <td>{course.ID}</td>
+            <td>{course.CourseName}</td>
             <td>{course.Grade}</td>
           </tr>
         ))}
       </tbody>
     </table>
-    <h5>Connected by FastAPI on Lambda<br />
-    Stored on DynamoDB</h5>
+    <h5>Connected by Lambda<br />
+    Stored on S3</h5>
     </div>
   );
 };
