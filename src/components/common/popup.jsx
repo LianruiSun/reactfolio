@@ -8,7 +8,7 @@ import CourseTable from "./courseTable";
 import useFetchData from "../../dynamoDB/useFetchData";
 
 const PopupButton = () => {
-    const { data, loading, error } = useFetchData('https://lfbshezzjo7xpbredxhmp5j6dq0bxhvh.lambda-url.us-east-1.on.aws/');
+    const { data, loading, error } = useFetchData('https://bsqq755yetyzs2bu2nm5pgfayi0npoms.lambda-url.us-east-1.on.aws/');
 
     return (
         <Popup
