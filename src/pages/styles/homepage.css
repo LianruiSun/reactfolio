@@ -148,3 +148,169 @@
 		margin-right: -25px;
 	}
 }
+/* ───────── FEATURE / RECENT EXPERIENCE ───────── */
+
+.homepage-feature-section {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  /* subtle card feel */
+  padding: 2rem;
+  border-radius: 1rem;
+  background: var(--background-alt, #f8f9fa);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* image wrapper keeps aspect ratio tidy */
+.homepage-feature-image-wrapper {
+  flex-shrink: 0;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.homepage-feature-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.homepage-feature-image:hover {
+  transform: scale(1.02);
+}
+
+/* text column */
+.homepage-feature-description {
+  max-width: 700px;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary, #333);
+}
+
+/* ──────── Responsive tweaks ──────── */
+@media (max-width: 1024px) {
+  .homepage-feature-section {
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  .homepage-feature-image-wrapper {
+    max-width: 100%;
+  }
+}
+
+.hero-image,
+.feature-image {
+  max-height: 450px;
+  width: 100%;
+  object-fit: cover;        /* .feature-image can stay `contain` if you prefer */
+  cursor: default;          /* no hand cursor */
+}
+
+.view-more-button {
+  cursor: default;          /* still clickable, but arrow pointer */
+}
+
+/* ─── View-More Button ─── */
+.view-more-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: var(--primary-color);
+  color: #fff;
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+
+.view-more-button:hover {
+  background: var(--primary-color-dark, #0056b3);
+}
+/* ───────── Section labels stick to the top ───────── */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  position: sticky;
+  top: 72px;          /* adjust if navbar height differs */
+  background: var(--bg-color);
+  padding: 0.5rem 0;
+  z-index: 5;
+}
+
+/* ───────── Experience cards ───────── */
+.experience-section {
+  margin: 4rem 0 2rem;
+}
+
+.experience-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  align-items: flex-start;
+}
+
+.experience-card-left {
+  flex: 1 1 280px;
+  max-width: 460px;
+}
+
+.experience-card-right {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem;
+}
+
+.experience-company {
+  font-size: 1.1rem;
+  color: var(--secondary-text-color);
+  margin: 0 0 0.75rem;
+}
+
+.experience-timeframe {
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.experience-description {
+  margin: 0.75rem 0 1rem;
+  line-height: 1.6;
+}
+
+.company-logo {
+  width: 140px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.5rem;
+}
+
+.featured-card {
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .experience-card {
+    flex-direction: column;
+  }
+  .experience-card-left {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .homepage-logo-container {
+    display: none;
+  }
+}

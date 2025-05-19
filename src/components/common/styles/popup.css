@@ -74,3 +74,42 @@
     margin-bottom: 5px;
     margin-left: 5px;
 }
+/* Compact the entire popup on phones */
+@media (max-width: 600px) {
+  .popup-content {
+    width: 90%;          /* fill most of the screen, but not edge-to-edge */
+    max-height: 90vh;    /* keep it from spilling off-screen */
+    height: auto;        /* let the content decide the height */
+    padding: 10px;       /* a bit of breathing room */
+  }
+
+  /* Header (red board) */
+  .redboard h2 {
+    font-size: 18px;     /* down from 22 px */
+  }
+
+  /* Close / circle button */
+  .circle-button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+  }
+
+  /* Inside white board */
+  .whiteboard h3 {
+    font-size: 16px;     /* slightly smaller sub-heading */
+  }
+
+  .whiteboard h4 {
+    font-size: 14px;
+  }
+
+  .whiteboard p {
+    font-size: 14px;
+  }
+
+  /* Logo */
+  .WPI-logo {
+    width: 40px;
+  }
+}

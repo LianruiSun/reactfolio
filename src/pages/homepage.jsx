@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet";
 
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faGithub,
-	faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
@@ -26,15 +26,21 @@ const Homepage = () => {
 	const [logoSize, setLogoSize] = useState(80);
 	const [oldLogoSize, setOldLogoSize] = useState(80);
 
+	/* ───────── Feature data from INFO ───────── */
+	const feature = INFO.feature || {};
+	const projectImages = feature.images || [];
+	const featureDescription = feature.description;
+	const featureLink = feature.link;
+
+	/* ───────── Scroll-dependent logo resize ───────── */
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
 	useEffect(() => {
 		const handleScroll = () => {
-			let scroll = Math.round(window.pageYOffset, 2);
-
-			let newLogoSize = 80 - (scroll * 4) / 10;
+			const scroll = Math.round(window.pageYOffset);
+			const newLogoSize = 80 - (scroll * 4) / 10;
 
 			if (newLogoSize < oldLogoSize) {
 				if (newLogoSize > 40) {
@@ -54,6 +60,7 @@ const Homepage = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [logoSize, oldLogoSize]);
 
+	/* ───────── SEO data ───────── */
 	const currentSEO = SEO.find((item) => item.page === "home");
 
 	const logoStyle = {
@@ -67,14 +74,11 @@ const Homepage = () => {
 	};
 
 	return (
-		<React.Fragment>
+		<>
 			<Helmet>
 				<title>{INFO.main.title}</title>
 				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
+				<meta name="keywords" content={currentSEO.keywords.join(", ")} />
 			</Helmet>
 
 			<div className="page-content">
@@ -102,7 +106,7 @@ const Homepage = () => {
 								<div className="homepage-image-container">
 									<div className="homepage-image-wrapper">
 										<img
-											src="homepage.jpg"
+											src={INFO.homepage.photo}
 											alt="about"
 											className="homepage-image"
 										/>
@@ -110,64 +114,72 @@ const Homepage = () => {
 								</div>
 							</div>
 						</div>
-
+						{/* ───── Social Links ───── */}
 						<div className="homepage-socials">
-							<a
-								href={INFO.socials.github}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faGithub}
-									className="homepage-social-icon"
-								/>
+							<a href={INFO.socials.github} target="_blank" rel="noreferrer">
+								<FontAwesomeIcon icon={faGithub} className="homepage-social-icon" />
 							</a>
-							<a
-								href={INFO.socials.linkedin}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faLinkedin}
-									className="homepage-social-icon"
-								/>
+							<a href={INFO.socials.linkedin} target="_blank" rel="noreferrer">
+								<FontAwesomeIcon icon={faLinkedin} className="homepage-social-icon" />
 							</a>
-							<a
-								href={`mailto:${INFO.main.email}`}
-								target="_blank"
-								rel="noreferrer"
-							>
-								<FontAwesomeIcon
-									icon={faMailBulk}
-									className="homepage-social-icon"
-								/>
+							<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer">
+								<FontAwesomeIcon icon={faMailBulk} className="homepage-social-icon" />
 							</a>
 						</div>
 
+						{/* ───── Feature / Recent Experience ───── */}
+						<div className="homepage-feature-section">
+							<div className="homepage-feature-image-wrapper">
+								<Carousel
+									showThumbs
+									showStatus={false}
+									infiniteLoop
+									emulateTouch
+									className="homepage-feature-carousel"
+								>
+									{projectImages.map((src, idx) => (
+										<div key={idx} className="homepage-feature-slide">
+											<img
+												src={src}
+												alt={`Project ${idx + 1}`}
+												className="homepage-feature-image feature-image"
+											/>
+										</div>
+									))}
+								</Carousel>
+							</div>
+
+							<div className="homepage-feature-description">
+								<p>{featureDescription}</p>
+								<a href={featureLink} className="view-more-button" target="_blank" rel="noreferrer">
+									View More
+								</a>
+							</div>
+						</div>
+
+						<div className="homepage-works">
+							<Works />
+						</div>
+
+						{/* ───── Projects List ───── */}
 						<div className="homepage-projects">
 							<AllProjects />
 						</div>
 
+						{/* ───── Articles & Works ───── */}
 						<div className="homepage-after-title">
 							<div className="homepage-articles">
 								{myArticles.map((article, index) => (
-									<div
-										className="homepage-article"
-										key={(index + 1).toString()}
-									>
+									<div className="homepage-article" key={(index + 1).toString()}>
 										<Article
 											key={(index + 1).toString()}
 											date={article().date}
 											title={article().title}
 											description={article().description}
-											link={"/article/" + (index + 1)}
+											link={`/article/${index + 1}`}
 										/>
 									</div>
 								))}
-							</div>
-
-							<div className="homepage-works">
-								<Works />
 							</div>
 						</div>
 
@@ -177,7 +189,7 @@ const Homepage = () => {
 					</div>
 				</div>
 			</div>
-		</React.Fragment>
+		</>
 	);
 };
 

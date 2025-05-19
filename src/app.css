@@ -121,3 +121,28 @@
 		width: 100%;
 	}
 }
+
+@media (max-width: 600px) {
+  html {
+    /* scale the whole typographic system down */
+    font-size: 14px;          /* was 16 px default */
+  }
+
+  .title {
+    font-size: 32px;          /* was 45 px */
+  }
+
+  .subtitle {
+    font-size: 14px;          /* was 16 px */
+    line-height: 22px;        /* tighter line height */
+  }
+}
+
+html {
+  scrollbar-gutter: stable;     /* always reserve the gutter */
+}
+
+/* Fallback for very old browsers */
+html {
+  overflow-y: scroll;           /* forces a scrollbar even when not needed */
+}
