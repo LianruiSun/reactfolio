@@ -53,7 +53,7 @@ const PopupButton = () => {
               <br />
               <strong>Department GPA:</strong> 3.88
               <br />
-              <strong>Cumulative GPA:</strong> 3.73
+              <strong>Cumulative GPA:</strong> 3.80
             </p>
           </div>
 
