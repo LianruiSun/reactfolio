@@ -18,11 +18,12 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "Full-stack web and software developer, and amateur game developer.",
+		title: "Full-stack engineer & AI SaaS founder",
 		photo: "homepage.jpg",
 		description:
-			"Hello! I'm Lianrui Sun, a Bachelor of Science student in Computer Science at Worcester Polytechnic Institute, graduating in 2025. I am familiar with several programming languages including Java, Python, JavaScript, C/C++, and have foundation in Linux environments. Additionally, I have hands-on experience with full-stack development using technologies like React, FastAPI, and MySQL. My goal is to continue to learn new techniques and solidify my skills, and use my knowledge to change the world.",
+			"Hi! I’m Lianrui Sun—currently pursuing an M.S. in Computer Science at NYU Courant (’27) and holding a B.S. from WPI (’25). I build production-ready web and mobile applications with React, TypeScript, Python, and AWS serverless. I founded Shangping, an AI-powered restaurant-review SaaS now live in 12 Beijing restaurants, and previously led development of an Android accessibility app for visually impaired users at InnoSpire. My passion is turning complex ideas into intuitive, scalable products that leave a positive impact.",
 	},
+
 
 	about: {
 		title: "I’m Lianrui Sun. I live in Boston, where I improve the world.",
@@ -34,7 +35,7 @@ const INFO = {
 		company: "InnoSpire (Co-work)",
 		companyLogo: "innospire_logo.png",
 		timeframe: "Aug 2024 – Present",
-		images: ["poster1.png", "poster2.png", "poster3.png"],
+		images: ["poster1.jpg", "poster2.png", "poster3.png"],
 		description: "In this work, we propose the design and development of a dual-mode language model (LM)-based multilingual mobile application, integrated with InnoSpire Glasses, to provide support and assistance to visually impaired and blind (VIB) individuals in identifying everyday objects, avoiding physical obstacles, and navigating public transportation services. The key contributions of this work are five-fold: (1) a seamless switching mechanism enabling automatic switching between online and offline modes based on network connectivity; (2) an online mode using a prompt-engineered GPT-4o model for real-time, context-aware navigation support; (3) an offline mode incorporating Phi-3-mini and YOLOv5 to provide functionality without internet access; (4) a comprehensive evaluation of system performance through experiments on diverse image datasets and multilingual surveys with VIB and sighted participants; and (5) a proof-of-concept mobile application prototype demonstrating the feasibility and effectiveness of our dual-mode assistive approach with InnoSpire Glasses.",
 		link: "https://digital.wpi.edu/concern/student_works/8p58pj03v"
 	},
@@ -43,7 +44,7 @@ const INFO = {
 		{
 			title: "AI Accessibility Application Developer - Internship",
 			company: "InnoSpire Technology Limited",
-			companyLogo: "https://media.licdn.com/dms/image/v2/C560BAQEpavNhzCrRdw/company-logo_100_100/company-logo_100_100/0/1630653534937?e=1753315200&v=beta&t=pag_fWZ0v_IU-BY4U9MdqZ2FfDEPQKd13tFnliBPLtw",
+			companyLogo: "InnoSpire.png",
 			timeframe: "Aug 2024 – May 2025",
 			images: [],
 			description:
@@ -53,7 +54,7 @@ const INFO = {
 		{
 			title: "Humanities & Arts Teaching Assistant",
 			company: "Worcester Polytechnic Institute",
-			companyLogo: "https://media.licdn.com/dms/image/v2/D4E0BAQEuh61cDwPjvA/company-logo_100_100/B4EZWlcM7gG0AQ-/0/1742237389906?e=1753315200&v=beta&t=Ygj6EWmnt_u4Nqoe-VjwW9twJQq1hn-uOQ_Lv8ywupI",
+			companyLogo: "WPI_logo.png",
 			timeframe: "Aug 2024 - Mar 2025",
 			images: [],
 			description:
@@ -63,7 +64,7 @@ const INFO = {
 		{
 			title: "Full-stack Developer",
 			company: " AYCG, Inc",
-			companyLogo: "https://media.licdn.com/dms/image/v2/D4E12AQFuCmxN72C2yQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1702503196049?e=1753315200&v=beta&t=hthwCsDOdnr0zyn2FTbQ8gefg7E9iGcwN4F4iQEeifA",
+			companyLogo: "AYCG.png",
 			timeframe: "Jul 2024 – Sep 2024",
 			images: [],
 			description:
