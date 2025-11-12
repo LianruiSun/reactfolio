@@ -13,8 +13,8 @@ import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
 import Article from "../components/homepage/article";
 import Works from "../components/homepage/works";
-import ParticleBackground from "../components/common/ParticleBackground";
-import Project from "../components/projects/Project";
+import ParticleBackground from "../components/common/particleBackground";
+import Project from "../components/projects/project";
 import {
 	FadeIn,
 	ScaleIn,
@@ -22,7 +22,7 @@ import {
 	StaggerItem,
 	HoverScale,
 	FloatingElement,
-} from "../components/common/AnimationWrappers";
+} from "../components/common/animationWrappers";
 
 // Data
 import INFO from "../data/user";
