@@ -7,7 +7,7 @@ import { TRACKING_ID } from "./data/tracking";
 import "./app.css";
 
 // Lazy load pages for better performance
-const Homepage = lazy(() => import("./pages/homepage"));
+const Homepage = lazy(() => import("./pages/Homepage"));
 const About = lazy(() => import("./pages/about"));
 const Projects = lazy(() => import("./pages/projects"));
 const Articles = lazy(() => import("./pages/articles"));

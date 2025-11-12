@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
-
+import { motion } from "framer-motion";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+// Components
 import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
 import Article from "../components/homepage/article";
 import Works from "../components/homepage/works";
-import AllProjects from "../components/projects/allProjects";
+import ParticleBackground from "../components/common/ParticleBackground";
+import Project from "../components/projects/Project";
+import {
+	FadeIn,
+	ScaleIn,
+	StaggerContainer,
+	StaggerItem,
+	HoverScale,
+	FloatingElement,
+} from "../components/common/AnimationWrappers";
 
+// Data
 import INFO from "../data/user";
 import SEO from "../data/seo";
 import myArticles from "../data/articles";
@@ -22,17 +32,17 @@ import myArticles from "../data/articles";
 import "./styles/homepage.css";
 
 const Homepage = () => {
-	const [stayLogo, setStayLogo] = useState(false);
 	const [logoSize, setLogoSize] = useState(80);
 	const [oldLogoSize, setOldLogoSize] = useState(80);
+	const [scrollProgress, setScrollProgress] = useState(0);
 
-	/* ───────── Feature data from INFO ───────── */
-	const feature = INFO.feature || {};
-	const projectImages = feature.images || [];
-	const featureDescription = feature.description;
-	const featureLink = feature.link;
+	// Featured works data
+	const featuredWorks = useMemo(() => INFO.featuredWorks || [], []);
 
-	/* ───────── Scroll-dependent logo resize ───────── */
+	// Get projects from INFO
+	const projects = useMemo(() => INFO.projects || [], []);
+
+	// Scroll effects
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
@@ -42,17 +52,18 @@ const Homepage = () => {
 			const scroll = Math.round(window.pageYOffset);
 			const newLogoSize = 80 - (scroll * 4) / 10;
 
+			// Update scroll progress for effects
+			const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+			const progress = (scroll / windowHeight) * 100;
+			setScrollProgress(progress);
+
 			if (newLogoSize < oldLogoSize) {
 				if (newLogoSize > 40) {
 					setLogoSize(newLogoSize);
 					setOldLogoSize(newLogoSize);
-					setStayLogo(false);
-				} else {
-					setStayLogo(true);
 				}
 			} else {
 				setLogoSize(newLogoSize);
-				setStayLogo(false);
 			}
 		};
 
@@ -60,18 +71,7 @@ const Homepage = () => {
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [logoSize, oldLogoSize]);
 
-	/* ───────── SEO data ───────── */
 	const currentSEO = SEO.find((item) => item.page === "home");
-
-	const logoStyle = {
-		display: "flex",
-		position: stayLogo ? "fixed" : "relative",
-		top: stayLogo ? "3vh" : "auto",
-		zIndex: 999,
-		border: stayLogo ? "1px solid white" : "none",
-		borderRadius: stayLogo ? "50%" : "none",
-		boxShadow: stayLogo ? "0px 4px 10px rgba(0, 0, 0, 0.25)" : "none",
-	};
 
 	return (
 		<>
@@ -81,116 +81,309 @@ const Homepage = () => {
 				<meta name="keywords" content={currentSEO.keywords.join(", ")} />
 			</Helmet>
 
-			<div className="page-content">
+			{/* Scroll progress indicator */}
+			<motion.div
+				className="scroll-progress"
+				style={{ scaleX: scrollProgress / 100 }}
+			></motion.div>
+
+			{/* Particle background */}
+			<ParticleBackground />
+
+			<div className="page-content enhanced-homepage">
 				<NavBar active="home" />
 				<div className="content-wrapper">
+					{/* Animated Logo - Floating */}
 					<div className="homepage-logo-container">
-						<div style={logoStyle}>
-							<Logo width={logoSize} link={false} />
-						</div>
+						<FloatingElement duration={4}>
+							<Logo width={46} link={false} />
+						</FloatingElement>
 					</div>
 
-					<div className="homepage-container">
-						<div className="homepage-first-area">
+					{/* Hero Section - Full Width */}
+					<div className="full-width-section hero-section">
+						<div className="hero-content">
+							<div className="homepage-first-area">
 							<div className="homepage-first-area-left-side">
-								<div className="title homepage-title">
-									{INFO.homepage.title}
-								</div>
+								<FadeIn direction="left" delay={0.1}>
+									<motion.div
+										className="title homepage-title"
+										initial={{ backgroundPosition: "0% 50%" }}
+										animate={{ backgroundPosition: "100% 50%" }}
+										transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
+									>
+										{INFO.homepage.title}
+									</motion.div>
+								</FadeIn>
 
-								<div className="subtitle homepage-subtitle">
-									{INFO.homepage.description}
-								</div>
+								<FadeIn direction="left" delay={0.2}>
+									<div className="homepage-tagline">{INFO.homepage.subtitle}</div>
+								</FadeIn>
+
+								<FadeIn direction="left" delay={0.3}>
+									<div className="homepage-description">
+										<p className="description-intro">{INFO.homepage.description.intro}</p>
+										<ul className="description-highlights">
+											{INFO.homepage.description.highlights.map((highlight, index) => (
+												<li key={index} dangerouslySetInnerHTML={{ __html: highlight }} />
+											))}
+										</ul>
+										<p className="description-closing">{INFO.homepage.description.closing}</p>
+									</div>
+								</FadeIn>
+
+								{/* Animated CTA Buttons */}
+								<FadeIn direction="left" delay={0.4}>
+									<div className="cta-buttons-group">
+										<HoverScale scale={1.05}>
+											<motion.a
+												href="#projects"
+												className="cta-button cta-primary"
+												whileHover={{
+													boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
+												}}
+												aria-label="View my projects"
+											>
+												<span>View My Projects</span>
+												<motion.span
+													className="cta-arrow"
+													animate={{ x: [0, 5, 0] }}
+													transition={{ duration: 1.5, repeat: Infinity }}
+												>
+													→
+												</motion.span>
+											</motion.a>
+										</HoverScale>
+										<HoverScale scale={1.05}>
+											<motion.a
+												href="/resume.pdf"
+												className="cta-button cta-secondary"
+												whileHover={{
+													backgroundColor: "rgba(255, 255, 255, 0.15)",
+												}}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label="Download my resume"
+											>
+												<span>Download Resume</span>
+												<motion.span
+													className="cta-icon"
+												>
+													↓
+												</motion.span>
+											</motion.a>
+										</HoverScale>
+									</div>
+								</FadeIn>
 							</div>
 
 							<div className="homepage-first-area-right-side">
-								<div className="homepage-image-container">
-									<div className="homepage-image-wrapper">
-										<img
-											src={INFO.homepage.photo}
-											alt="about"
-											className="homepage-image"
-										/>
-									</div>
-								</div>
-							</div>
-						</div>
-						{/* ───── Social Links ───── */}
-						<div className="homepage-socials">
-							<a href={INFO.socials.github} target="_blank" rel="noreferrer">
-								<FontAwesomeIcon icon={faGithub} className="homepage-social-icon" />
-							</a>
-							<a href={INFO.socials.linkedin} target="_blank" rel="noreferrer">
-								<FontAwesomeIcon icon={faLinkedin} className="homepage-social-icon" />
-							</a>
-							<a href={`mailto:${INFO.main.email}`} target="_blank" rel="noreferrer">
-								<FontAwesomeIcon icon={faMailBulk} className="homepage-social-icon" />
-							</a>
-						</div>
-
-						{/* ───── Feature / Recent Experience ───── */}
-						<div className="homepage-feature-section">
-							<div className="homepage-feature-image-wrapper">
-								<Carousel
-									showThumbs
-									showStatus={false}
-									infiniteLoop
-									emulateTouch
-									className="homepage-feature-carousel"
-								>
-									{projectImages.map((src, idx) => (
-										<div key={idx} className="homepage-feature-slide">
-											<img
-												src={src}
-												alt={`Project ${idx + 1}`}
-												className="homepage-feature-image feature-image"
-											/>
+								<ScaleIn delay={0.5}>
+									<div className="homepage-image-container">
+										<motion.div
+											className="homepage-image-wrapper"
+											whileHover={{ scale: 1.03 }}
+											transition={{ duration: 0.3 }}
+										>
+											<div className="image-glow"></div>
+											<img src={INFO.homepage.photo} alt={`${INFO.homepage.name} - ${INFO.homepage.role}`} className="homepage-image" />
+										</motion.div>
+										<div className="profile-info">
+											<h3 className="profile-name">{INFO.homepage.name}</h3>
+											<p className="profile-role">{INFO.homepage.role}</p>
 										</div>
-									))}
-								</Carousel>
-							</div>
+									</div>
+								</ScaleIn>
 
-							<div className="homepage-feature-description">
-								<p>{featureDescription}</p>
-								<a href={featureLink} className="view-more-button" target="_blank" rel="noreferrer">
-									View More
-								</a>
+								{/* Social Links with Animation - Positioned near photo */}
+								<FadeIn delay={0.6}>
+									<div className="homepage-socials">
+									{[
+										{ icon: faGithub, link: INFO.socials.github, label: "GitHub Profile" },
+										{ icon: faLinkedin, link: INFO.socials.linkedin, label: "LinkedIn Profile" },
+										{ icon: faMailBulk, link: `mailto:${INFO.main.email}`, label: "Email me" },
+									].map((social, index) => (
+										<motion.a
+											key={index}
+											href={social.link}
+											target="_blank"
+											rel="noreferrer"
+											className="homepage-social-icon-wrapper"
+											whileHover={{ y: -5, scale: 1.1 }}
+											whileTap={{ scale: 0.95 }}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ delay: 0.7 + index * 0.1 }}
+											aria-label={social.label}
+										>
+											<FontAwesomeIcon icon={social.icon} className="homepage-social-icon" />
+										</motion.a>
+									))}
+									</div>
+								</FadeIn>
 							</div>
 						</div>
+						</div>
+					</div>
 
+				{/* Featured Works Section - Full Width */}
+				<div className="full-width-section feature-full-section">
+					<FadeIn direction="up" delay={0.1}>
+						<div className="homepage-feature-section">
+							<h2 className="section-title">Featured Works</h2>
+							<StaggerContainer staggerDelay={0.2}>
+								<div className="featured-works-container">
+									{featuredWorks.map((work, index) => (
+										<StaggerItem key={index}>
+											<motion.div
+												className="featured-work-card"
+												whileHover={{ y: -8 }}
+												transition={{ duration: 0.3 }}
+											>
+												<div className="homepage-feature-content">
+													<ScaleIn delay={0.3}>
+														<div className="homepage-feature-image-wrapper">
+															<Carousel
+																showThumbs
+																showStatus={false}
+																infiniteLoop
+																emulateTouch
+																autoPlay
+																interval={5000}
+																className="homepage-feature-carousel"
+															>
+																{work.images.map((src, idx) => (
+																	<div key={idx} className="homepage-feature-slide">
+																		<img
+																			src={src}
+																			alt={`${work.title} - Screenshot ${idx + 1}`}
+																			className="homepage-feature-image feature-image"
+																		/>
+																	</div>
+																))}
+															</Carousel>
+														</div>
+													</ScaleIn>
+
+													<FadeIn direction="right" delay={0.5}>
+														<div className="homepage-feature-description">
+															<div className="feature-header">
+																<h3 className="feature-title">{work.title}</h3>
+																<div className="feature-meta">
+																	<span className="feature-company">{work.company}</span>
+																	<span className="feature-timeframe">{work.timeframe}</span>
+																</div>
+															</div>
+															
+															{work.tags && work.tags.length > 0 && (
+																<div className="feature-tags">
+																	{work.tags.map((tag, tagIdx) => (
+																		<span key={tagIdx} className="feature-tag">
+																			{tag}
+																		</span>
+																	))}
+																</div>
+															)}
+															
+															<p>{work.description}</p>
+															
+															{work.link && (
+																<HoverScale>
+																	<a
+																		href={work.link}
+																		className="view-more-button"
+																		target="_blank"
+																		rel="noreferrer"
+																	>
+																		View More →
+																	</a>
+																</HoverScale>
+															)}
+														</div>
+													</FadeIn>
+												</div>
+											</motion.div>
+										</StaggerItem>
+									))}
+								</div>
+							</StaggerContainer>
+						</div>
+					</FadeIn>
+				</div>
+
+				{/* Works Section - Full Width Dark */}
+				<div className="full-width-section works-full-section">
+					<FadeIn direction="up" delay={0.2}>
 						<div className="homepage-works">
 							<Works />
 						</div>
-
-						{/* ───── Projects List ───── */}
-						<div className="homepage-projects">
-							<AllProjects />
-						</div>
-
-						{/* ───── Articles & Works ───── */}
-						<div className="homepage-after-title">
-							<div className="homepage-articles">
-								{myArticles.map((article, index) => (
-									<div className="homepage-article" key={(index + 1).toString()}>
-										<Article
-											key={(index + 1).toString()}
-											date={article().date}
-											title={article().title}
-											description={article().description}
-											link={`/article/${index + 1}`}
-										/>
-									</div>
+					</FadeIn>
+				</div>					{/* Projects Section - Full Width */}
+					<div className="full-width-section projects-full-section">
+						<FadeIn direction="up" delay={0.1}>
+							<div className="homepage-projects" id="projects">
+								<FadeIn delay={0.2}>
+									<h2 className="section-title">Projects</h2>
+								</FadeIn>
+							<StaggerContainer staggerDelay={0.15}>
+								<div className="enhanced-projects-grid">
+									{projects.map((project, index) => (
+										<StaggerItem key={index}>
+											<Project
+												logo={project.logo}
+												title={project.title}
+												description={project.description}
+												linkText={project.linkText}
+												link={project.link}
+												index={index}
+											/>
+										</StaggerItem>
 								))}
+								</div>
+							</StaggerContainer>
 							</div>
-						</div>
-
-						<div className="page-footer">
-							<Footer />
-						</div>
+						</FadeIn>
 					</div>
+
+					{/* Articles Section - Full Width */}
+					<div className="full-width-section articles-full-section">
+						<FadeIn direction="up" delay={0.1}>
+							<div className="homepage-after-title">
+								<FadeIn delay={0.2}>
+									<h2 className="section-title">Latest Articles</h2>
+								</FadeIn>
+							<StaggerContainer staggerDelay={0.1}>
+								<div className="homepage-articles">
+									{myArticles.map((article, index) => (
+										<StaggerItem key={index}>
+											<motion.div
+												className="homepage-article"
+												whileHover={{ y: -5 }}
+												transition={{ duration: 0.2 }}
+											>
+												<Article
+													date={article().date}
+													title={article().title}
+													description={article().description}
+													link={`/article/${index + 1}`}
+												/>
+											</motion.div>
+										</StaggerItem>
+									))}
+								</div>
+							</StaggerContainer>
+							</div>
+						</FadeIn>
+					</div>
+
 				</div>
 			</div>
+
+			{/* Footer - Full Width */}
+			<Footer />
 		</>
 	);
 };
 
 export default Homepage;
+

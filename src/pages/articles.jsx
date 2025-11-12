@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import Logo from "../components/common/logo";
 import Article from "../components/articles/article";
+import { FadeIn, FloatingElement } from "../components/common/AnimationWrappers";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
@@ -30,26 +32,34 @@ const Articles = () => {
 				/>
 			</Helmet>
 
-			<div className="page-content">
+			<div className="page-content articles-page">
 				<NavBar active="articles" />
-				<div className="content-wrapper">
+				
+				<div className="articles-hero-section">
 					<div className="articles-logo-container">
-						<div className="articles-logo">
+						<FloatingElement duration={4}>
 							<Logo width={46} />
-						</div>
+						</FloatingElement>
 					</div>
+					
+					<div className="articles-hero-content">
+						<FadeIn direction="up" delay={0.2}>
+							<motion.h1 className="articles-hero-title">
+								{INFO.articles.title}
+							</motion.h1>
+						</FadeIn>
+						<FadeIn direction="up" delay={0.4}>
+							<p className="articles-hero-subtitle">
+								{INFO.articles.description}
+							</p>
+						</FadeIn>
+					</div>
+				</div>
 
-					<div className="articles-main-container">
-						<div className="title articles-title">
-							{INFO.articles.title}
-						</div>
-
-						<div className="subtitle articles-subtitle">
-							{INFO.articles.description}
-						</div>
-
-						<div className="articles-container">
-							<div className="articles-wrapper">
+				<div className="articles-main-section">
+					<div className="articles-container">
+						<FadeIn direction="up" delay={0.2}>
+							<div className="articles-timeline">
 								{myArticles.map((article, index) => (
 									<div
 										className="articles-article"
@@ -65,12 +75,11 @@ const Articles = () => {
 									</div>
 								))}
 							</div>
-						</div>
-					</div>
-					<div className="page-footer">
-						<Footer />
+						</FadeIn>
 					</div>
 				</div>
+
+				<Footer />
 			</div>
 		</React.Fragment>
 	);

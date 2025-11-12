@@ -9,36 +9,58 @@ const INFO = {
 	},
 
 	socials: {
-		twitter: "https://twitter.com/",
 		github: "https://github.com/LianruiSun",
 		linkedin: "https://www.linkedin.com/in/lianrui-sun-5638392b4/",
-		instagram: "https://instagram.com/",
-		stackoverflow: "https://stackoverflow.com/",
-		facebook: "https://facebook.com/",
 	},
 
 	homepage: {
-		title: "Full-stack engineer & AI SaaS founder",
+		title: "Full-Stack Software Engineer & AI Solutions Architect",
+		subtitle: "Building AI-powered, full-stack web products that solve real-world challenges",
 		photo: "homepage.jpg",
-		description:
-			"Hi! I’m Lianrui Sun—currently pursuing an M.S. in Computer Science at NYU Courant (’27) and holding a B.S. from WPI (’25). I build production-ready web and mobile applications with React, TypeScript, Python, and AWS serverless. I founded Shangping, an AI-powered restaurant-review SaaS now live in 12 Beijing restaurants, and previously led development of an Android accessibility app for visually impaired users at InnoSpire. My passion is turning complex ideas into intuitive, scalable products that leave a positive impact.",
+		name: "Lianrui Sun",
+		role: "Software Engineer",
+		description: {
+			intro: "I'm Lianrui Sun, a graduate student pursuing an M.S. in Computer Science at NYU Courant Institute (expected 2027), with a B.S. from Worcester Polytechnic Institute (2025).",
+			highlights: [
+				"Founder of <strong>Shangping</strong>, an <strong>AI-powered</strong> restaurant analytics SaaS platform deployed across 12 establishments in Beijing",
+				"Developed an Android accessibility application for visually impaired users at <strong>InnoSpire</strong>, integrating advanced language models and computer vision",
+				"Specialized in building scalable applications with React, TypeScript, Python, and <strong>serverless</strong> architecture on AWS"
+			],
+			closing: "I'm committed to leveraging cutting-edge technologies to create impactful, user-centered solutions."
+		},
 	},
 
 
 	about: {
-		title: "I’m Lianrui Sun. I live in Boston, where I improve the world.",
+		title: "I'm Lianrui Sun. I live in Boston, where I create innovative solutions.",
 		description:
-			"During my time in college, I had a wide range of program experiences across many fields. Many of the projects solved real-world problems and facilitated and promoted development. In the process, I keep learning and improving myself by gaining more knowledge from different fields and people. Feel free to contact me for any communication, I will remain positive and open.",
+			"Throughout my academic and professional career, I have cultivated diverse technical expertise across multiple domains of software engineering. My portfolio encompasses projects that address tangible real-world challenges, from accessibility technology to enterprise-grade web applications. I maintain a commitment to continuous learning, actively seeking knowledge from interdisciplinary fields and collaborative partnerships. My approach combines technical excellence with user-centered design principles to deliver solutions that make a meaningful impact. I welcome opportunities for professional collaboration and knowledge exchange.",
 	},
 
-	feature: {
-		company: "InnoSpire (Co-work)",
-		companyLogo: "innospire_logo.png",
-		timeframe: "Aug 2024 – Present",
-		images: ["poster1.jpg", "poster2.png", "poster3.png"],
-		description: "In this work, we propose the design and development of a dual-mode language model (LM)-based multilingual mobile application, integrated with InnoSpire Glasses, to provide support and assistance to visually impaired and blind (VIB) individuals in identifying everyday objects, avoiding physical obstacles, and navigating public transportation services. The key contributions of this work are five-fold: (1) a seamless switching mechanism enabling automatic switching between online and offline modes based on network connectivity; (2) an online mode using a prompt-engineered GPT-4o model for real-time, context-aware navigation support; (3) an offline mode incorporating Phi-3-mini and YOLOv5 to provide functionality without internet access; (4) a comprehensive evaluation of system performance through experiments on diverse image datasets and multilingual surveys with VIB and sighted participants; and (5) a proof-of-concept mobile application prototype demonstrating the feasibility and effectiveness of our dual-mode assistive approach with InnoSpire Glasses.",
-		link: "https://digital.wpi.edu/concern/student_works/8p58pj03v"
-	},
+	featuredWorks: [
+		{
+			title: "AI Accessibility Application for Visually Impaired People",
+			company: "InnoSpire (Co-work)",
+			companyLogo: "innospire_logo.png",
+			timeframe: "Aug 2024 – May 2025",
+			images: ["poster1.jpg", "poster2.png", "poster3.png"],
+			description: "In this work, we propose the design and development of a dual-mode language model (LM)-based multilingual mobile application, integrated with InnoSpire Glasses, to provide support and assistance to visually impaired and blind (VIB) individuals in identifying everyday objects, avoiding physical obstacles, and navigating public transportation services. The key contributions of this work are five-fold: (1) a seamless switching mechanism enabling automatic switching between online and offline modes based on network connectivity; (2) an online mode using a prompt-engineered GPT-4o model for real-time, context-aware navigation support; (3) an offline mode incorporating Phi-3-mini and YOLOv5 to provide functionality without internet access; (4) a comprehensive evaluation of system performance through experiments on diverse image datasets and multilingual surveys with VIB and sighted participants; and (5) a proof-of-concept mobile application prototype demonstrating the feasibility and effectiveness of our dual-mode assistive approach with InnoSpire Glasses.",
+			link: "https://digital.wpi.edu/concern/student_works/8p58pj03v",
+			tags: ["AI/ML", "Mobile Development", "Accessibility"]
+		},
+		// Add more featured works here following the same structure
+		// Example:
+		// {
+		// 	title: "Your Project Title",
+		// 	company: "Company Name",
+		// 	companyLogo: "logo.png",
+		// 	timeframe: "Month Year – Month Year",
+		// 	images: ["image1.jpg", "image2.jpg", "image3.jpg"],
+		// 	description: "Your project description here...",
+		// 	link: "https://your-project-link.com",
+		// 	tags: ["Tag1", "Tag2", "Tag3"]
+		// },
+	],
 
 	experiences: [
 		{

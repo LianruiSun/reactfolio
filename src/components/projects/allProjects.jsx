@@ -1,6 +1,6 @@
 import React from "react";
 
-import Project from "./project";
+import Project from "./Project";
 
 import INFO from "../../data/user";
 
@@ -17,6 +17,7 @@ const AllProjects = () => {
 						description={project.description}
 						linkText={project.linkText}
 						link={project.link}
+						index={index}
 					/>
 				</div>
 			))}
