@@ -5,7 +5,6 @@ import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 // Components
 import Logo from "../components/common/logo";
@@ -30,6 +29,8 @@ import SEO from "../data/seo";
 import myArticles from "../data/articles";
 
 import "./styles/homepage.css";
+// Lazy load carousel CSS only when needed
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Homepage = () => {
 	const [logoSize, setLogoSize] = useState(80);
@@ -48,26 +49,36 @@ const Homepage = () => {
 	}, []);
 
 	useEffect(() => {
+		let ticking = false;
+
 		const handleScroll = () => {
-			const scroll = Math.round(window.pageYOffset);
-			const newLogoSize = 80 - (scroll * 4) / 10;
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					const scroll = Math.round(window.pageYOffset);
+					const newLogoSize = 80 - (scroll * 4) / 10;
 
-			// Update scroll progress for effects
-			const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-			const progress = (scroll / windowHeight) * 100;
-			setScrollProgress(progress);
+					// Update scroll progress for effects
+					const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+					const progress = (scroll / windowHeight) * 100;
+					setScrollProgress(progress);
 
-			if (newLogoSize < oldLogoSize) {
-				if (newLogoSize > 40) {
-					setLogoSize(newLogoSize);
-					setOldLogoSize(newLogoSize);
-				}
-			} else {
-				setLogoSize(newLogoSize);
+					if (newLogoSize < oldLogoSize) {
+						if (newLogoSize > 40) {
+							setLogoSize(newLogoSize);
+							setOldLogoSize(newLogoSize);
+						}
+					} else {
+						setLogoSize(newLogoSize);
+					}
+
+					ticking = false;
+				});
+
+				ticking = true;
 			}
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, [logoSize, oldLogoSize]);
 
@@ -186,7 +197,13 @@ const Homepage = () => {
 											transition={{ duration: 0.3 }}
 										>
 											<div className="image-glow"></div>
-											<img src={INFO.homepage.photo} alt={`${INFO.homepage.name} - ${INFO.homepage.role}`} className="homepage-image" />
+											<img 
+												src={INFO.homepage.photo} 
+												alt={`${INFO.homepage.name} - ${INFO.homepage.role}`} 
+												className="homepage-image"
+												loading="eager"
+												fetchpriority="high"
+											/>
 										</motion.div>
 										<div className="profile-info">
 											<h3 className="profile-name">{INFO.homepage.name}</h3>

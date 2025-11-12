@@ -45,7 +45,7 @@ const Project = (props) => {
 						whileHover={{ rotate: [0, -5, 5, 0], scale: 1.1 }}
 						transition={{ duration: 0.5 }}
 					>
-						<img src={logo} alt="logo" />
+						<img src={logo} alt="logo" loading="lazy" />
 					</motion.div>
 
 					{/* Title with gradient */}
