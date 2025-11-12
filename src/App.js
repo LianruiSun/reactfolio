@@ -7,13 +7,13 @@ import { TRACKING_ID } from "./data/tracking";
 import "./app.css";
 
 // Lazy load pages for better performance
-const Homepage = lazy(() => import("./pages/Homepage"));
-const About = lazy(() => import("./pages/about"));
-const Projects = lazy(() => import("./pages/projects"));
-const Articles = lazy(() => import("./pages/articles"));
-const ReadArticle = lazy(() => import("./pages/readArticle"));
-const Contact = lazy(() => import("./pages/contact"));
-const Notfound = lazy(() => import("./pages/404"));
+const Homepage = lazy(() => import("./pages/Homepage.jsx"));
+const About = lazy(() => import("./pages/about.jsx"));
+const Projects = lazy(() => import("./pages/projects.jsx"));
+const Articles = lazy(() => import("./pages/articles.jsx"));
+const ReadArticle = lazy(() => import("./pages/readArticle.jsx"));
+const Contact = lazy(() => import("./pages/contact.jsx"));
+const Notfound = lazy(() => import("./pages/404.jsx"));
 
 function App() {
 	useEffect(() => {
