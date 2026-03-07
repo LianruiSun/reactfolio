@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
 
 import INFO from "../data/user";
 import myArticles from "../data/articles";
@@ -41,10 +40,6 @@ return (
 <NavBar />
 
 <section className="read-article-hero-section">
-<div className="read-article-logo-container">
-<Logo width={46} />
-</div>
-
 <motion.div 
 className="read-article-back"
 onClick={() => navigate(-1)}

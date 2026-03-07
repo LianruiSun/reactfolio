@@ -7,7 +7,6 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Carousel } from "react-responsive-carousel";
 
 // Components
-import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
 import Article from "../components/homepage/article";
@@ -20,7 +19,6 @@ import {
 	StaggerContainer,
 	StaggerItem,
 	HoverScale,
-	FloatingElement,
 } from "../components/common/animationWrappers";
 
 // Data
@@ -105,12 +103,6 @@ const Homepage = () => {
 				<NavBar active="home" />
 				<div className="content-wrapper">
 					{/* Animated Logo - Floating */}
-					<div className="homepage-logo-container">
-						<FloatingElement duration={4}>
-							<Logo width={46} link={false} />
-						</FloatingElement>
-					</div>
-
 					{/* Hero Section - Full Width */}
 					<div className="full-width-section hero-section">
 						<div className="hero-content">

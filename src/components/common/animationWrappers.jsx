@@ -136,26 +136,6 @@ export const HoverScale = ({ children, scale = 1.05 }) => {
 	);
 };
 
-// Floating animation (memoized)
-export const FloatingElement = ({ children, duration = 3 }) => {
-	const animateProps = useMemo(() => ({
-		animate: {
-			y: [0, -10, 0],
-		},
-		transition: {
-			duration,
-			repeat: Infinity,
-			ease: "easeInOut",
-		},
-	}), [duration]);
-
-	return (
-		<motion.div {...animateProps}>
-			{children}
-		</motion.div>
-	);
-};
-
 // Parallax effect
 export const ParallaxScroll = ({ children, speed = 0.5 }) => {
 	const [ref, inView] = useInView({

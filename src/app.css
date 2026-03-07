@@ -1,182 +1,57 @@
 @import "/src/data/styles.css";
 
-/* Modern Custom Scrollbar with gradient */
-::-webkit-scrollbar {
-	width: 12px;
-}
-
-::-webkit-scrollbar-track {
-	background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-}
-
-::-webkit-scrollbar-thumb {
-	background: linear-gradient(180deg, #3b82f6 0%, #8b5cf6 100%);
-	border-radius: 10px;
-	border: 2px solid #f1f5f9;
-	transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background: linear-gradient(180deg, #2563eb 0%, #7c3aed 100%);
-	box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-/* Smooth Scroll Behavior */
 html {
-	scroll-behavior: smooth;
-	scrollbar-gutter: stable;
-	overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
-/* Global text selection styling */
-::selection {
-	background: rgba(59, 130, 246, 0.3);
-	color: #1e293b;
-}
-
-::-moz-selection {
-	background: rgba(59, 130, 246, 0.3);
-	color: #1e293b;
-}
-
-/* Page Content with Modern Background */
 .page-content {
-	background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
-	position: relative;
-	min-height: 100vh;
-}
-
-.page-content:before,
-.page-content:after {
-	content: "";
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: calc((100% - 1200px) / 2);
-	background: linear-gradient(135deg, rgba(250, 250, 250, 0.5) 0%, rgba(244, 244, 245, 0.5) 100%);
-	border: 1px solid rgba(244, 244, 245, 0.8);
-	backdrop-filter: blur(5px);
-	z-index: 0;
-}
-
-.page-content:before {
-	left: 0;
-	z-index: 1;
-}
-
-.page-content:after {
-	right: 0;
-	z-index: 1;
+  background: var(--bg);
+  position: relative;
+  min-height: 100vh;
 }
 
 .content-wrapper {
-	max-width: 1000px;
-	margin: 0 auto;
-	position: relative;
-	z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 48px;
 }
 
 .title {
-	color: var(--primary-color);
-	font-family: var(--secondary-font);
-	font-size: 48px;
-	font-weight: 800;
-	width: 70%;
-	line-height: 1.3;
-	animation: fadeIn 0.8s ease-out;
+  font-family: var(--secondary-font);
+  color: var(--primary-color);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  width: 70%;
 }
 
 .subtitle {
-	padding-top: 10px;
-	color: var(--secondary-color);
-	font-size: 17px;
-	line-height: 1.8;
-	width: 70%;
-	margin-top: 25px;
-	animation: fadeIn 0.8s ease-out 0.2s both;
+  padding-top: 8px;
+  color: var(--secondary-color);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  width: 70%;
+  margin-top: 20px;
+  font-weight: 400;
 }
 
 .page-footer {
-	position: block;
-	margin-top: 80px;
-	padding: 40px 0;
+  margin-top: 80px;
 }
 
-.page-footer::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	border-top: 2px solid rgba(172, 172, 180, 0.3);
-	box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 1270px) {
-	.page-content:before,
-	.page-content:after {
-		width: calc((100% - 90%) / 2);
-	}
-
-	.content-wrapper {
-		max-width: 90%;
-		padding-left: 10%;
-		padding-right: 10%;
-	}
-}
-
-@media (max-width: 1024px) {
-	.page-content:before,
-	.page-content:after {
-		width: calc((100% - 950px) / 2);
-	}
-
-	.content-wrapper {
-		max-width: 980px;
-	}
-}
-
-@media (max-width: 800px) {
-	.content-wrapper {
-		max-width: 90%;
-		margin: 0 auto;
-		padding: 0 10px;
-	}
-
-	.page-content:before,
-	.page-content:after {
-		display: none;
-	}
-
-	.title {
-		width: 100%;
-	}
-
-	.subtitle {
-		width: 100%;
-	}
-}
-
-@media (max-width: 600px) {
-  html {
-    /* scale the whole typographic system down */
-    font-size: 14px;          /* was 16 px default */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0 24px;
   }
-
   .title {
-    font-size: 32px;          /* was 45 px */
+    width: 100%;
+    font-size: 2rem;
   }
-
   .subtitle {
-    font-size: 14px;          /* was 16 px */
-    line-height: 22px;        /* tighter line height */
+    width: 100%;
+    font-size: 1rem;
   }
-}
-
-html {
-  scrollbar-gutter: stable;     /* always reserve the gutter */
-}
-
-/* Fallback for very old browsers */
-html {
-  overflow-y: scroll;           /* forces a scrollbar even when not needed */
 }

@@ -1,97 +1,57 @@
 @import "../../../data/styles.css";
 
 .loading-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
-	background-size: 200% 200%;
-	animation: gradientShift 3s ease infinite, fadeIn 0.3s ease-in;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 9999;
-}
-
-@keyframes gradientShift {
-	0%, 100% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg);
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9999;
 }
 
 .loading-spinner {
-	position: relative;
-	width: 120px;
-	height: 120px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .spinner-ring {
-	position: absolute;
-	border: 4px solid transparent;
-	border-radius: 50%;
-	animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  position: absolute;
+  border: 1.5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1.4s linear infinite;
 }
 
 .spinner-ring:nth-child(1) {
-	width: 100%;
-	height: 100%;
-	border-top-color: #3b82f6;
-	border-right-color: #3b82f6;
-	animation-delay: 0s;
-	filter: drop-shadow(0 0 10px #3b82f6);
+  width: 100%; height: 100%;
+  border-top-color: var(--primary-color);
 }
 
 .spinner-ring:nth-child(2) {
-	width: 80%;
-	height: 80%;
-	border-bottom-color: #8b5cf6;
-	border-left-color: #8b5cf6;
-	animation-delay: 0.2s;
-	animation-direction: reverse;
-	filter: drop-shadow(0 0 10px #8b5cf6);
+  width: 70%; height: 70%;
+  border-bottom-color: var(--border);
+  animation-direction: reverse;
+  animation-duration: 1.8s;
 }
 
-.spinner-ring:nth-child(3) {
-	width: 60%;
-	height: 60%;
-	border-top-color: #ec4899;
-	border-right-color: #ec4899;
-	animation-delay: 0.4s;
-	filter: drop-shadow(0 0 10px #ec4899);
-}
+.spinner-ring:nth-child(3) { display: none; }
 
 .spinner-text {
-	position: absolute;
-	color: white;
-	font-size: 14px;
-	font-weight: 600;
-	letter-spacing: 2px;
-	animation: pulse 1.5s ease-in-out infinite;
+  position: absolute;
+  color: var(--tertiary-color);
+  font-family: var(--primary-font);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 @keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-@keyframes pulse {
-	0%, 100% {
-		opacity: 0.6;
-	}
-	50% {
-		opacity: 1;
-	}
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }

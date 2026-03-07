@@ -4,9 +4,8 @@ import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
 import Socials from "../components/about/socials";
-import { FadeIn, FloatingElement } from "../components/common/animationWrappers";
+import { FadeIn } from "../components/common/animationWrappers";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
@@ -35,12 +34,6 @@ content={currentSEO.keywords.join(", ")}
 <NavBar active="contact" />
 
 <div className="contact-hero-section">
-<div className="contact-logo-container">
-<FloatingElement duration={4}>
-<Logo width={46} />
-</FloatingElement>
-</div>
-
 <div className="contact-hero-content">
 <FadeIn direction="up" delay={0.2}>
 <motion.h1 className="contact-hero-title">

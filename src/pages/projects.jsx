@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
-import Logo from "../components/common/logo";
 import AllProjects from "../components/projects/allProjects";
 import { FadeIn, FloatingElement } from "../components/common/animationWrappers";
 
@@ -36,11 +35,6 @@ const Projects = () => {
 				
 				{/* Hero Section */}
 				<div className="projects-hero-section">
-					<div className="projects-logo-container">
-						<FloatingElement duration={4}>
-							<Logo width={46} />
-						</FloatingElement>
-					</div>
 					
 					<div className="projects-hero-content">
 						<FadeIn direction="up" delay={0.2}>
