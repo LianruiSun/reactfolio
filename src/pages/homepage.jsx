@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { Carousel } from "react-responsive-carousel";
-
 // Components
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
@@ -27,8 +25,6 @@ import SEO from "../data/seo";
 import myArticles from "../data/articles";
 
 import "./styles/homepage.css";
-// Lazy load carousel CSS only when needed
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Homepage = () => {
 	const [logoSize, setLogoSize] = useState(80);
@@ -235,87 +231,67 @@ const Homepage = () => {
 						</div>
 					</div>
 
-				{/* Featured Works Section - Full Width */}
-				<div className="full-width-section feature-full-section">
-					<FadeIn direction="up" delay={0.1}>
-						<div className="homepage-feature-section">
-							<h2 className="section-title">Featured Works</h2>
-							<StaggerContainer staggerDelay={0.2}>
-								<div className="featured-works-container">
-									{featuredWorks.map((work, index) => (
-										<StaggerItem key={index}>
-											<motion.div
-												className="featured-work-card"
-												whileHover={{ y: -8 }}
-												transition={{ duration: 0.3 }}
-											>
-												<div className="homepage-feature-content">
-													<ScaleIn delay={0.3}>
-														<div className="homepage-feature-image-wrapper">
-															<Carousel
-																showThumbs
-																showStatus={false}
-																infiniteLoop
-																emulateTouch
-																autoPlay
-																interval={5000}
-																className="homepage-feature-carousel"
-															>
-																{work.images.map((src, idx) => (
-																	<div key={idx} className="homepage-feature-slide">
-																		<img
-																			src={src}
-																			alt={`${work.title} - Screenshot ${idx + 1}`}
-																			className="homepage-feature-image feature-image"
-																		/>
-																	</div>
-																))}
-															</Carousel>
-														</div>
-													</ScaleIn>
+{/* Featured Works Section */}
+			<div className="full-width-section feature-full-section">
+				<FadeIn direction="up" delay={0.1}>
+					<div className="homepage-feature-section">
+						<h2 className="section-title">Featured Works</h2>
+						<div className="featured-works-container">
+							{featuredWorks.map((work, index) => (
+								<FadeIn key={index} direction="up" delay={index * 0.1}>
+									<div className="featured-work-card">
 
-													<FadeIn direction="right" delay={0.5}>
-														<div className="homepage-feature-description">
-															<div className="feature-header">
-																<h3 className="feature-title">{work.title}</h3>
-																<div className="feature-meta">
-																	<span className="feature-company">{work.company}</span>
-																	<span className="feature-timeframe">{work.timeframe}</span>
-																</div>
-															</div>
-															
-															{work.tags && work.tags.length > 0 && (
-																<div className="feature-tags">
-																	{work.tags.map((tag, tagIdx) => (
-																		<span key={tagIdx} className="feature-tag">
-																			{tag}
-																		</span>
-																	))}
-																</div>
-															)}
-															
-															<p>{work.description}</p>
-															
-															{work.link && (
-																<HoverScale>
-																	<a
-																		href={work.link}
-																		className="view-more-button"
-																		target="_blank"
-																		rel="noreferrer"
-																	>
-																		View More →
-																	</a>
-																</HoverScale>
-															)}
-														</div>
-													</FadeIn>
+										{/* Eyebrow: index + tags */}
+										<div className="fw-eyebrow">
+											<span className="fw-index">Case Study {String(index + 1).padStart(2, "0")}</span>
+											{work.tags?.length > 0 && (
+												<div className="fw-tags">
+													{work.tags.map((tag, i) => (
+														<span key={i} className="fw-tag">{tag}</span>
+													))}
 												</div>
-											</motion.div>
-										</StaggerItem>
-									))}
-								</div>
-							</StaggerContainer>
+											)}
+										</div>
+
+										{/* Title */}
+										<h3 className="fw-title">{work.title}</h3>
+
+										{/* Meta */}
+										<div className="fw-meta">
+											<span className="fw-company">{work.company}</span>
+											<span className="fw-sep">·</span>
+											<span className="fw-timeframe">{work.timeframe}</span>
+										</div>
+
+										{/* Body: images + description */}
+										<div className="fw-body">
+											<div className="fw-images">
+												<div className="feature-image-grid" data-count={work.images.length}>
+													{work.images.map((src, idx) => (
+														<img
+															key={idx}
+															src={src}
+															alt={`${work.title} — ${idx + 1}`}
+															className="feature-image-grid-item"
+															loading="lazy"
+														/>
+													))}
+												</div>
+											</div>
+											<div className="fw-description">
+												<p>{work.description}</p>
+												{work.link && (
+													<a href={work.link} className="fw-link" target="_blank" rel="noreferrer">
+														View More →
+													</a>
+												)}
+											</div>
+										</div>
+
+									</div>
+								</FadeIn>
+							))}
+						</div>
 						</div>
 					</FadeIn>
 				</div>

@@ -1,11 +1,12 @@
 @import "../../../data/styles.css";
 
-.article-card { width: 100%; }
+.article-card { width: 100%; height: 100%; }
 
 .article-card-link {
   text-decoration: none;
   display: block;
   width: 100%;
+  height: 100%;
 }
 
 .article-card-container {
@@ -14,6 +15,8 @@
   padding: 32px;
   transition: border-color var(--transition-fast);
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .article-card-container:hover { border-color: #C8C3BB; }
@@ -51,6 +54,7 @@
   line-height: 1.7;
   color: var(--secondary-color);
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 
 .article-card-link-button {

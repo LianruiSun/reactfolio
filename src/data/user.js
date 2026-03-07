@@ -45,7 +45,7 @@ const INFO = {
 			timeframe: "Aug 2024 – May 2025",
 			images: ["poster1.jpg", "poster2.png", "poster3.png"],
 			description: "In this work, we propose the design and development of a dual-mode language model (LM)-based multilingual mobile application, integrated with InnoSpire Glasses, to provide support and assistance to visually impaired and blind (VIB) individuals in identifying everyday objects, avoiding physical obstacles, and navigating public transportation services. The key contributions of this work are five-fold: (1) a seamless switching mechanism enabling automatic switching between online and offline modes based on network connectivity; (2) an online mode using a prompt-engineered GPT-4o model for real-time, context-aware navigation support; (3) an offline mode incorporating Phi-3-mini and YOLOv5 to provide functionality without internet access; (4) a comprehensive evaluation of system performance through experiments on diverse image datasets and multilingual surveys with VIB and sighted participants; and (5) a proof-of-concept mobile application prototype demonstrating the feasibility and effectiveness of our dual-mode assistive approach with InnoSpire Glasses.",
-			link: "https://digital.wpi.edu/concern/student_works/8p58pj03v",
+			link: "https://www.linkedin.com/feed/update/urn:li:activity:7327949235172089856/?originTrackingId=AtSWYZ31fzo9Pl5rUvIBDw%3D%3D",
 			tags: ["AI/ML", "Mobile Development", "Accessibility"]
 		},
 		// Add more featured works here following the same structure
