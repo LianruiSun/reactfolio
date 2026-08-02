@@ -122,6 +122,20 @@
 
 .footer-heart { color: #888480; margin: 0 3px; }
 
+html[lang="zh-CN"] .footer-nav-title,
+html[lang="zh-CN"] .footer-social-title,
+html[lang="zh-CN"] .footer-contact-title {
+	letter-spacing: 0.07em;
+	text-transform: none;
+}
+
+html[lang="zh-CN"] .footer-tagline,
+html[lang="zh-CN"] .footer-cta,
+html[lang="zh-CN"] .footer-copyright,
+html[lang="zh-CN"] .footer-rights {
+	line-height: 1.75;
+}
+
 .scroll-to-top {
   width: 40px;
   height: 40px;

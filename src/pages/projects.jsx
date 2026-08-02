@@ -9,10 +9,23 @@ import { FadeIn, FloatingElement } from "../components/common/animationWrappers"
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
+import { useLanguage } from "../contexts/languageContext";
 
 import "./styles/projects.css";
 
 const Projects = () => {
+	const { language } = useLanguage();
+	const copy = language === "zh"
+		? {
+			title: "项目",
+			subtitle: "通过持续构建，拓展技术能力并解决真实问题",
+			intro: "这些项目覆盖 Web、数据、桌面应用与游戏开发，记录了我在不同工程领域中的学习与实践。",
+		}
+		: {
+			title: "My Projects",
+			subtitle: "Things I've made trying to improve myself and improve the world",
+			intro: "Within the last few years, I have completed different projects in different areas. These projects have not only helped the world but also enhanced my learning and knowledge.",
+		};
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
@@ -22,7 +35,7 @@ const Projects = () => {
 	return (
 		<React.Fragment>
 			<Helmet>
-				<title>{`Projects | ${INFO.main.title}`}</title>
+				<title>{`${language === "zh" ? "作品" : "Projects"} | ${INFO.main.title}`}</title>
 				<meta name="description" content={currentSEO.description} />
 				<meta
 					name="keywords"
@@ -39,12 +52,12 @@ const Projects = () => {
 					<div className="projects-hero-content">
 						<FadeIn direction="up" delay={0.2}>
 							<motion.h1 className="projects-hero-title">
-								My Projects
+								{copy.title}
 							</motion.h1>
 						</FadeIn>
 						<FadeIn direction="up" delay={0.4}>
 							<p className="projects-hero-subtitle">
-								Things I've made trying to improve myself and improve the world
+								{copy.subtitle}
 							</p>
 						</FadeIn>
 					</div>
@@ -55,8 +68,7 @@ const Projects = () => {
 					<div className="projects-container">
 						<FadeIn direction="up" delay={0.2}>
 							<p className="projects-intro">
-								Within the last few years, I have completed different projects in different areas. 
-								These projects have not only helped the world but also enhanced my learning and knowledge.
+								{copy.intro}
 							</p>
 						</FadeIn>
 

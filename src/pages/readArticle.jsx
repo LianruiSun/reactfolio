@@ -9,12 +9,14 @@ import Footer from "../components/common/footer";
 
 import INFO from "../data/user";
 import myArticles from "../data/articles";
+import { useLanguage } from "../contexts/languageContext";
 
 import "./styles/readArticle.css";
 
 let ArticleStyle = styled.div``;
 
 const ReadArticle = () => {
+const { language } = useLanguage();
 const navigate = useNavigate();
 let { slug } = useParams();
 
@@ -25,15 +27,15 @@ window.scrollTo(0, 0);
 }, [article]);
 
 ArticleStyle = styled.div`
-${article().style}
+${article(language).style}
 `;
 
 return (
 <React.Fragment>
 <Helmet>
-<title>{`${article().title} | ${INFO.main.title}`}</title>
-<meta name="description" content={article().description} />
-<meta name="keywords" content={article().keywords.join(", ")} />
+<title>{`${article(language).title} | ${INFO.main.title}`}</title>
+<meta name="description" content={article(language).description} />
+<meta name="keywords" content={article(language).keywords.join(", ")} />
 </Helmet>
 
 <div className="page-content read-article-page">
@@ -60,10 +62,10 @@ animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.8 }}
 >
 <div className="read-article-date-badge">
-{article().date}
+{article(language).date}
 </div>
 <h1 className="read-article-hero-title">
-{article().title}
+{article(language).title}
 </h1>
 </motion.div>
 </section>
@@ -76,7 +78,7 @@ animate={{ opacity: 1, y: 0 }}
 transition={{ duration: 0.8, delay: 0.2 }}
 >
 <div className="read-article-body">
-<ArticleStyle>{article().body}</ArticleStyle>
+<ArticleStyle>{article(language).body}</ArticleStyle>
 </div>
 </motion.div>
 </section>

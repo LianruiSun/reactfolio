@@ -1,374 +1,331 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { motion } from "framer-motion";
-import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown, faArrowRight, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-// Components
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
-import Article from "../components/homepage/article";
-import Works from "../components/homepage/works";
-import ParticleBackground from "../components/common/particleBackground";
-import Project from "../components/projects/project";
-import {
-	FadeIn,
-	ScaleIn,
-	StaggerContainer,
-	StaggerItem,
-	HoverScale,
-} from "../components/common/animationWrappers";
-
-// Data
+import { FadeIn, StaggerContainer, StaggerItem } from "../components/common/animationWrappers";
+import { useLanguage } from "../contexts/languageContext";
 import INFO from "../data/user";
-import SEO from "../data/seo";
-import myArticles from "../data/articles";
+import PORTFOLIO_EN from "../data/portfolio";
+import PORTFOLIO_ZH from "../data/portfolio.zh";
 
 import "./styles/homepage.css";
 
+const UI_COPY = {
+	en: {
+		pageTitle: "Darcy Sun — Software Engineer & AI Product Builder",
+		metaDescription: "Lianrui (Darcy) Sun is a software engineer building full-stack AI applications, with product management experience owning a ToB media-monitoring SaaS across GUI and LUI Agent experiences at Baidu AI Cloud.",
+		current: "Currently",
+		explore: "Explore selected work",
+		resume: "SDE resume",
+		selectedWork: "Selected work",
+		caseStudies: "case studies",
+		workDescription: "Engineering-led work across full-stack AI systems, complemented by ownership of a ToB media-monitoring SaaS at Baidu AI Cloud.",
+		case: "Case",
+		experienceEyebrow: "02 / Experience",
+		experience: "Experience",
+		experienceDescription: "A software engineering path complemented by hands-on ownership of an enterprise AI product at Baidu.",
+		rangeEyebrow: "03 / Working range",
+		rangeTitle: "Engineering first, informed by product ownership.",
+		rangeDescription: "These capabilities are grounded in the work above, not presented as standalone claims.",
+		practiceEyebrow: "04 / Technical product practice",
+		practiceTitle: "Product decisions grounded in system behavior.",
+		practiceDescription: "My Baidu work adds a ToB product lens to an engineering foundation: iterate the core GUI SaaS, translate its capabilities into an LUI Agent experience, prototype key states, and validate the data path.",
+		resumeEyebrow: "Two ways to go deeper",
+		resumeTitle: "Explore the work from an engineering or product lens.",
+		pmResume: "PM resume",
+		image: "Image",
+		primaryVisual: "primary visual",
+		productScreen: "product screen",
+		visual: "visual",
+		emailLabel: "Email",
+		social: { github: "GitHub Profile", linkedin: "LinkedIn Profile", email: "Email me" },
+	},
+	zh: {
+		pageTitle: "Darcy Sun — 软件工程师与 AI 产品构建者",
+		metaDescription: "孙镰瑞（Darcy Sun）专注于全栈 AI 应用，目前在百度智能云负责 Hogee 企业舆情监测 SaaS 及其 Agent 工作流。",
+		current: "当前",
+		explore: "查看代表项目",
+		resume: "工程简历",
+		selectedWork: "代表项目",
+		caseStudies: "个项目案例",
+		workDescription: "用三个项目说明我如何把工程实现、模型能力与产品判断连接起来。",
+		case: "案例",
+		experienceEyebrow: "02 / 工作经历",
+		experience: "工作经历",
+		experienceDescription: "从全栈工程与 AI 应用开发，到企业 AI 产品设计与交付。",
+		rangeEyebrow: "03 / 技术与产品能力",
+		rangeTitle: "既能把系统做出来，也能判断 AI 应该用在哪里。",
+		rangeDescription: "这些能力都来自真实项目中的设计、开发、验证与交付。",
+		practiceEyebrow: "04 / AI 产品方法",
+		practiceTitle: "关键不是接入一个模型，而是设计一条可验证的完整链路。",
+		practiceDescription: "从场景拆解和交互选型开始，明确平台计算、模型生成与人工确认的边界，再通过数据、证据和 Bad Case 持续验证。",
+		resumeEyebrow: "两份简历",
+		resumeTitle: "从工程与 AI 产品两个角度了解我的完整经历。",
+		pmResume: "产品简历",
+		image: "图片",
+		primaryVisual: "主视觉",
+		productScreen: "产品界面",
+		visual: "项目图片",
+		emailLabel: "邮箱",
+		social: { github: "GitHub 主页", linkedin: "LinkedIn 主页", email: "发送邮件" },
+	},
+};
+
+const SocialLinks = ({ ui }) => (
+	<div className="homepage-socials">
+		<a href={INFO.socials.github} target="_blank" rel="noreferrer" aria-label={ui.social.github}>
+			<FontAwesomeIcon icon={faGithub} />
+			<span>GitHub</span>
+		</a>
+		<a href={INFO.socials.linkedin} target="_blank" rel="noreferrer" aria-label={ui.social.linkedin}>
+			<FontAwesomeIcon icon={faLinkedin} />
+			<span>LinkedIn</span>
+		</a>
+		<a href={`mailto:${INFO.main.email}`} aria-label={ui.social.email}>
+			<FontAwesomeIcon icon={faEnvelope} />
+			<span>{ui.emailLabel}</span>
+		</a>
+	</div>
+);
+
+const CaseStudyVisual = ({ study, ui }) => {
+	const slots = study.images.length > 0 ? study.images : Array.from({ length: study.imageSlots || 2 });
+	const isLeadWithPair = study.visualLayout === "lead-with-pair" && study.images.length >= 3;
+
+	if (isLeadWithPair) {
+		return (
+			<div className="case-study-visual visual-layout-lead-with-pair">
+				<img src={study.images[0]} alt={`${study.title} ${ui.primaryVisual}`} loading="lazy" />
+				<div className="case-study-paired-frame">
+					{study.images.slice(1, 3).map((image, index) => (
+						<img key={image} src={image} alt={`${study.title} ${ui.productScreen} ${index + 1}`} loading="lazy" />
+					))}
+				</div>
+			</div>
+		);
+	}
+
+	return (
+		<div className={`case-study-visual ${study.images.length === 0 ? "has-placeholders" : ""} ${study.visualLayout ? `visual-layout-${study.visualLayout}` : ""}`}>
+			{slots.map((image, index) =>
+				image ? (
+					<img key={image} src={image} alt={`${study.title} ${ui.visual} ${index + 1}`} loading="lazy" />
+				) : (
+					<div className="case-study-placeholder" key={`placeholder-${index}`}>
+						<span>{ui.image} {String(index + 1).padStart(2, "0")}</span>
+						<small>{study.imagePlaceholder}</small>
+					</div>
+				)
+			)}
+		</div>
+	);
+};
+
+const CaseStudy = ({ study, ui }) => (
+	<article className="case-study">
+		<div className="case-study-heading">
+			<div className="case-study-eyebrow">
+				<span>{ui.case} {study.index}</span>
+				<span>{study.label}</span>
+			</div>
+			<h3>{study.title}</h3>
+			<div className="case-study-meta">
+				<span>{study.role}</span>
+				<span>{study.timeframe}</span>
+			</div>
+		</div>
+
+		<div className="case-study-grid">
+			<div className="case-study-content">
+				<p className="case-study-summary">{study.summary}</p>
+
+				<div className="case-study-impact">
+					<h4>{study.impactLabel}</h4>
+					<div className="case-study-metrics">
+						{study.metrics.map((metric) => (
+							<div className="case-study-metric" key={`${metric.value}-${metric.label}`}>
+								<strong>{metric.value}</strong>
+								<span>{metric.label}</span>
+							</div>
+						))}
+					</div>
+				</div>
+
+				<div className="case-study-lenses">
+					{study.focusSections.map((section, index) => (
+						<div className={index === 0 ? "case-study-lens-primary" : "case-study-lens-secondary"} key={section.title}>
+							<h4>{section.title}</h4>
+							<ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>
+						</div>
+					))}
+				</div>
+
+				<div className="case-study-stack">
+					{study.stack.map((item) => <span key={item}>{item}</span>)}
+				</div>
+			</div>
+			<CaseStudyVisual study={study} ui={ui} />
+		</div>
+	</article>
+);
+
 const Homepage = () => {
-	const [logoSize, setLogoSize] = useState(80);
-	const [oldLogoSize, setOldLogoSize] = useState(80);
-	const [scrollProgress, setScrollProgress] = useState(0);
+	const { language } = useLanguage();
+	const portfolio = language === "zh" ? PORTFOLIO_ZH : PORTFOLIO_EN;
+	const ui = UI_COPY[language];
 
-	// Featured works data
-	const featuredWorks = useMemo(() => INFO.featuredWorks || [], []);
-
-	// Get projects from INFO
-	const projects = useMemo(() => INFO.projects || [], []);
-
-	// Scroll effects
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	useEffect(() => {
-		let ticking = false;
-
-		const handleScroll = () => {
-			if (!ticking) {
-				window.requestAnimationFrame(() => {
-					const scroll = Math.round(window.pageYOffset);
-					const newLogoSize = 80 - (scroll * 4) / 10;
-
-					// Update scroll progress for effects
-					const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
-					const progress = (scroll / windowHeight) * 100;
-					setScrollProgress(progress);
-
-					if (newLogoSize < oldLogoSize) {
-						if (newLogoSize > 40) {
-							setLogoSize(newLogoSize);
-							setOldLogoSize(newLogoSize);
-						}
-					} else {
-						setLogoSize(newLogoSize);
-					}
-
-					ticking = false;
-				});
-
-				ticking = true;
-			}
-		};
-
-		window.addEventListener("scroll", handleScroll, { passive: true });
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, [logoSize, oldLogoSize]);
-
-	const currentSEO = SEO.find((item) => item.page === "home");
-
 	return (
 		<>
 			<Helmet>
-				<title>{INFO.main.title}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta name="keywords" content={currentSEO.keywords.join(", ")} />
+				<title>{ui.pageTitle}</title>
+				<meta
+					name="description"
+					content={ui.metaDescription}
+				/>
+				<meta name="keywords" content="Darcy Sun, Lianrui Sun, Software Engineer, AI Product, Agent, React, TypeScript" />
 			</Helmet>
-
-			{/* Scroll progress indicator */}
-			<motion.div
-				className="scroll-progress"
-				style={{ scaleX: scrollProgress / 100 }}
-			></motion.div>
-
-			{/* Particle background */}
-			<ParticleBackground />
 
 			<div className="page-content enhanced-homepage">
 				<NavBar active="home" />
-				<div className="content-wrapper">
-					{/* Animated Logo - Floating */}
-					{/* Hero Section - Full Width */}
-					<div className="full-width-section hero-section">
-						<div className="hero-content">
-							<div className="homepage-first-area">
-							<div className="homepage-first-area-left-side">
-								<FadeIn direction="left" delay={0.1}>
-									<motion.div
-										className="title homepage-title"
-										initial={{ backgroundPosition: "0% 50%" }}
-										animate={{ backgroundPosition: "100% 50%" }}
-										transition={{ duration: 3, repeat: Infinity, repeatType: "reverse" }}
-									>
-										{INFO.homepage.title}
-									</motion.div>
-								</FadeIn>
 
-								<FadeIn direction="left" delay={0.2}>
-									<div className="homepage-tagline">{INFO.homepage.subtitle}</div>
-								</FadeIn>
-
-								<FadeIn direction="left" delay={0.3}>
-									<div className="homepage-description">
-										<p className="description-intro">{INFO.homepage.description.intro}</p>
-										<ul className="description-highlights">
-											{INFO.homepage.description.highlights.map((highlight, index) => (
-												<li key={index} dangerouslySetInnerHTML={{ __html: highlight }} />
-											))}
-										</ul>
-										<p className="description-closing">{INFO.homepage.description.closing}</p>
+				<main className="content-wrapper">
+					<section className="full-width-section hero-section">
+						<div className="hero-content homepage-hero-grid">
+							<div className="hero-copy">
+								<FadeIn direction="up" delay={0.1}>
+									<p className="eyebrow">{portfolio.profile.eyebrow}</p>
+									<h1>{portfolio.profile.name}</h1>
+									<div className="hero-current-role">
+										<span>{ui.current}</span>
+										<div>
+											<strong>{portfolio.profile.currentRole}</strong>
+											<p>{portfolio.profile.currentCompany}</p>
+										</div>
 									</div>
-								</FadeIn>
-
-								{/* Animated CTA Buttons */}
-								<FadeIn direction="left" delay={0.4}>
-									<div className="cta-buttons-group">
-										<HoverScale scale={1.05}>
-											<motion.a
-												href="#projects"
-												className="cta-button cta-primary"
-												whileHover={{
-													boxShadow: "0 10px 40px rgba(59, 130, 246, 0.5)",
-												}}
-												aria-label="View my projects"
-											>
-												<span>View My Projects</span>
-												<motion.span
-													className="cta-arrow"
-													animate={{ x: [0, 5, 0] }}
-													transition={{ duration: 1.5, repeat: Infinity }}
-												>
-													→
-												</motion.span>
-											</motion.a>
-										</HoverScale>
-										<HoverScale scale={1.05}>
-											<motion.a
-												href="/resume.pdf"
-												className="cta-button cta-secondary"
-												whileHover={{
-													backgroundColor: "rgba(255, 255, 255, 0.15)",
-												}}
-												target="_blank"
-												rel="noopener noreferrer"
-												aria-label="Download my resume"
-											>
-												<span>Download Resume</span>
-												<motion.span
-													className="cta-icon"
-												>
-													↓
-												</motion.span>
-											</motion.a>
-										</HoverScale>
+									<p className="hero-subtitle">{portfolio.profile.subtitle}</p>
+									<div className="hero-actions">
+										<a className="button button-primary" href="#selected-work">
+											{ui.explore} <FontAwesomeIcon icon={faArrowRight} />
+										</a>
+										<a className="button button-secondary" href="/Darcy_Sun_SDE.pdf" target="_blank" rel="noreferrer">
+											{ui.resume} <FontAwesomeIcon icon={faArrowDown} />
+										</a>
 									</div>
 								</FadeIn>
 							</div>
 
-							<div className="homepage-first-area-right-side">
-								<ScaleIn delay={0.5}>
-									<div className="homepage-image-container">
-										<motion.div
-											className="homepage-image-wrapper"
-											whileHover={{ scale: 1.03 }}
-											transition={{ duration: 0.3 }}
-										>
-											<div className="image-glow"></div>
-											<img 
-												src={INFO.homepage.photo} 
-												alt={`${INFO.homepage.name} - ${INFO.homepage.role}`} 
-												className="homepage-image"
-												loading="eager"
-												fetchpriority="high"
-											/>
-										</motion.div>
-										<div className="profile-info">
-											<h3 className="profile-name">{INFO.homepage.name}</h3>
-											<p className="profile-role">{INFO.homepage.role}</p>
-										</div>
+							<FadeIn direction="up" delay={0.3}>
+								<aside className="hero-profile-card">
+									<img src={portfolio.profile.photo} alt="Darcy Sun" />
+									<div className="hero-profile-info">
+										<strong>{portfolio.profile.role}</strong>
+										<span>{portfolio.profile.location}</span>
 									</div>
-								</ScaleIn>
+									<SocialLinks ui={ui} />
+								</aside>
+							</FadeIn>
+						</div>
+					</section>
 
-								{/* Social Links with Animation - Positioned near photo */}
-								<FadeIn delay={0.6}>
-									<div className="homepage-socials">
-									{[
-										{ icon: faGithub, link: INFO.socials.github, label: "GitHub Profile" },
-										{ icon: faLinkedin, link: INFO.socials.linkedin, label: "LinkedIn Profile" },
-										{ icon: faMailBulk, link: `mailto:${INFO.main.email}`, label: "Email me" },
-									].map((social, index) => (
-										<motion.a
-											key={index}
-											href={social.link}
-											target="_blank"
-											rel="noreferrer"
-											className="homepage-social-icon-wrapper"
-											whileHover={{ y: -5, scale: 1.1 }}
-											whileTap={{ scale: 0.95 }}
-											initial={{ opacity: 0, y: 20 }}
-											animate={{ opacity: 1, y: 0 }}
-											transition={{ delay: 0.7 + index * 0.1 }}
-											aria-label={social.label}
-										>
-											<FontAwesomeIcon icon={social.icon} className="homepage-social-icon" />
-										</motion.a>
-									))}
-									</div>
-								</FadeIn>
+					<section className="full-width-section work-section" id="selected-work">
+						<div className="section-inner">
+							<div className="section-intro work-intro">
+								<div className="work-title-row">
+									<h2>{ui.selectedWork}</h2>
+									<span>{portfolio.caseStudies.length} {ui.caseStudies}</span>
+								</div>
+								<p>{ui.workDescription}</p>
+							</div>
+							<div className="case-studies">
+								{portfolio.caseStudies.map((study) => <CaseStudy key={study.index} study={study} ui={ui} />)}
 							</div>
 						</div>
-						</div>
-					</div>
+					</section>
 
-{/* Featured Works Section */}
-			<div className="full-width-section feature-full-section">
-				<FadeIn direction="up" delay={0.1}>
-					<div className="homepage-feature-section">
-						<h2 className="section-title">Featured Works</h2>
-						<div className="featured-works-container">
-							{featuredWorks.map((work, index) => (
-								<FadeIn key={index} direction="up" delay={index * 0.1}>
-									<div className="featured-work-card">
-
-										{/* Eyebrow: index + tags */}
-										<div className="fw-eyebrow">
-											<span className="fw-index">Case Study {String(index + 1).padStart(2, "0")}</span>
-											{work.tags?.length > 0 && (
-												<div className="fw-tags">
-													{work.tags.map((tag, i) => (
-														<span key={i} className="fw-tag">{tag}</span>
-													))}
-												</div>
-											)}
-										</div>
-
-										{/* Title */}
-										<h3 className="fw-title">{work.title}</h3>
-
-										{/* Meta */}
-										<div className="fw-meta">
-											<span className="fw-company">{work.company}</span>
-											<span className="fw-sep">·</span>
-											<span className="fw-timeframe">{work.timeframe}</span>
-										</div>
-
-										{/* Body: images + description */}
-										<div className="fw-body">
-											<div className="fw-images">
-												<div className="feature-image-grid" data-count={work.images.length}>
-													{work.images.map((src, idx) => (
-														<img
-															key={idx}
-															src={src}
-															alt={`${work.title} — ${idx + 1}`}
-															className="feature-image-grid-item"
-															loading="lazy"
-														/>
-													))}
-												</div>
-											</div>
-											<div className="fw-description">
-												<p>{work.description}</p>
-												{work.link && (
-													<a href={work.link} className="fw-link" target="_blank" rel="noreferrer">
-														View More →
-													</a>
-												)}
-											</div>
-										</div>
-
+					<section className="full-width-section experience-section">
+						<div className="section-inner">
+							<div className="section-intro">
+								<p className="eyebrow">{ui.experienceEyebrow}</p>
+								<h2>{ui.experience}</h2>
+								<p className="section-description">{ui.experienceDescription}</p>
+							</div>
+							<div className="experience-list">
+								{portfolio.experience.map((item) => (
+									<div className="experience-item" key={`${item.company}-${item.timeframe}`}>
+										<span className="experience-time">{item.timeframe}</span>
+										<div><h3>{item.company}</h3><strong>{item.role}</strong><p>{item.focus}</p></div>
+										<span className="experience-location">{item.location}</span>
 									</div>
-								</FadeIn>
-							))}
-						</div>
-						</div>
-					</FadeIn>
-				</div>
-
-				{/* Works Section - Full Width Dark */}
-				<div className="full-width-section works-full-section">
-					<FadeIn direction="up" delay={0.2}>
-						<div className="homepage-works">
-							<Works />
-						</div>
-					</FadeIn>
-				</div>					{/* Projects Section - Full Width */}
-					<div className="full-width-section projects-full-section">
-						<FadeIn direction="up" delay={0.1}>
-							<div className="homepage-projects" id="projects">
-								<FadeIn delay={0.2}>
-									<h2 className="section-title">Projects</h2>
-								</FadeIn>
-							<StaggerContainer staggerDelay={0.15}>
-								<div className="enhanced-projects-grid">
-									{projects.map((project, index) => (
-										<StaggerItem key={index}>
-											<Project
-												logo={project.logo}
-												title={project.title}
-												description={project.description}
-												linkText={project.linkText}
-												link={project.link}
-												index={index}
-											/>
-										</StaggerItem>
 								))}
-								</div>
-							</StaggerContainer>
 							</div>
-						</FadeIn>
-					</div>
+						</div>
+					</section>
 
-					{/* Articles Section - Full Width */}
-					<div className="full-width-section articles-full-section">
-						<FadeIn direction="up" delay={0.1}>
-							<div className="homepage-after-title">
-								<FadeIn delay={0.2}>
-									<h2 className="section-title">Latest Articles</h2>
-								</FadeIn>
+					<section className="full-width-section capabilities-section">
+						<div className="section-inner">
+							<div className="section-intro">
+								<p className="eyebrow">{ui.rangeEyebrow}</p>
+								<h2>{ui.rangeTitle}</h2>
+								<p className="section-description">{ui.rangeDescription}</p>
+							</div>
 							<StaggerContainer staggerDelay={0.1}>
-								<div className="homepage-articles">
-									{myArticles.map((article, index) => (
-										<StaggerItem key={index}>
-											<motion.div
-												className="homepage-article"
-												whileHover={{ y: -5 }}
-												transition={{ duration: 0.2 }}
-											>
-												<Article
-													date={article().date}
-													title={article().title}
-													description={article().description}
-													link={`/article/${index + 1}`}
-												/>
-											</motion.div>
+								<div className="capabilities-grid">
+									{portfolio.capabilities.map((capability) => (
+										<StaggerItem key={capability.index}>
+											<article className="capability-card">
+												<span className="card-index">{capability.index}</span>
+												<h3>{capability.title}</h3>
+												<p>{capability.description}</p>
+												<strong>{capability.evidence}</strong>
+											</article>
 										</StaggerItem>
 									))}
 								</div>
 							</StaggerContainer>
-							</div>
-						</FadeIn>
-					</div>
+						</div>
+					</section>
 
-				</div>
+					<section className="full-width-section thinking-section">
+						<div className="section-inner thinking-grid">
+							<div className="section-intro">
+								<p className="eyebrow">{ui.practiceEyebrow}</p>
+								<h2>{ui.practiceTitle}</h2>
+								<p className="section-description">{ui.practiceDescription}</p>
+							</div>
+							<div className="thinking-list">
+								{portfolio.thinking.map((item) => (
+									<div className="thinking-item" key={item.index}>
+										<span className="card-index">{item.index}</span>
+										<div><h3>{item.title}</h3><p>{item.text}</p><small>{item.evidence}</small></div>
+									</div>
+								))}
+							</div>
+						</div>
+					</section>
+
+					<section className="resume-section">
+						<div className="resume-inner">
+							<div><p className="eyebrow">{ui.resumeEyebrow}</p><h2>{ui.resumeTitle}</h2></div>
+							<div className="resume-actions">
+								<a className="button button-primary" href="/Darcy_Sun_SDE.pdf" target="_blank" rel="noreferrer">{ui.resume} <FontAwesomeIcon icon={faArrowDown} /></a>
+								<a className="button button-secondary" href="/Darcy_Sun_PM.pdf" target="_blank" rel="noreferrer">{ui.pmResume} <FontAwesomeIcon icon={faArrowDown} /></a>
+							</div>
+						</div>
+					</section>
+				</main>
 			</div>
 
-			{/* Footer - Full Width */}
 			<Footer />
 		</>
 	);
 };
 
 export default Homepage;
-

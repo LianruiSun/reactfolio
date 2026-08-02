@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 import "./style/article.css";
+import { useLanguage } from "../../contexts/languageContext";
 
 const Article = (props) => {
 	const { date, title, description, link } = props;
+	const { language } = useLanguage();
 
 	return (
 		<motion.div 
@@ -30,7 +32,7 @@ const Article = (props) => {
 					<p className="article-card-description">{description}</p>
 					
 					<div className="article-card-link-button">
-						Read Article
+						{language === "zh" ? "阅读文章" : "Read Article"}
 						<FontAwesomeIcon icon={faChevronRight} className="article-arrow-icon" />
 					</div>
 				</div>
