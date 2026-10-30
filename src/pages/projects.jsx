@@ -18,13 +18,13 @@ const Projects = () => {
 	const copy = language === "zh"
 		? {
 			title: "项目",
-			subtitle: "通过持续构建，拓展技术能力并解决真实问题",
-			intro: "这些项目覆盖 Web、数据、桌面应用与游戏开发，记录了我在不同工程领域中的学习与实践。",
+			subtitle: "把生成式 AI 做成真实可用的产品",
+			intro: "最上面是我近期的 AI 产品工作；下方存档保留了早期在 Web、数据、桌面应用与游戏开发上的项目。",
 		}
 		: {
 			title: "My Projects",
-			subtitle: "Things I've made trying to improve myself and improve the world",
-			intro: "Within the last few years, I have completed different projects in different areas. These projects have not only helped the world but also enhanced my learning and knowledge.",
+			subtitle: "Generative AI, built into real products",
+			intro: "Recent AI product work comes first. The archive below keeps my earlier projects across web, data, desktop, and game development.",
 		};
 	useEffect(() => {
 		window.scrollTo(0, 0);

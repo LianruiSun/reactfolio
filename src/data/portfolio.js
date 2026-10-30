@@ -1,12 +1,12 @@
 const PORTFOLIO = {
 	profile: {
 		eyebrow: "Lianrui (Darcy) Sun",
-		name: "Software engineer building full-stack AI applications.",
+		name: "Software engineer turning generative AI into reliable production products.",
 		subtitle:
-			"I build full-stack AI applications and reliable software systems. At Baidu AI Cloud, I work on a ToB media-monitoring SaaS: iterating the GUI product and planning its LUI-based Agent experience.",
-		role: "Software Engineer / AI Product Builder",
-		currentRole: "AI Product Manager Intern",
-		currentCompany: "Baidu AI Cloud / Hogee",
+			"I ship AI generation features end to end: model integration, billing correctness, content platforms, and developer SDKs. I move fast with parallel coding agents, and tests, Preview acceptance, and production checks keep each release safe.",
+		role: "Software Engineer / AI Applications",
+		currentRole: "Full Stack Engineer, Part-Time",
+		currentCompany: "Astorie · AI Video Canvas",
 		location: "NYU Courant / M.S. Computer Science / Expected May 2027",
 		photo: "/homepage.jpg",
 	},
@@ -14,71 +14,112 @@ const PORTFOLIO = {
 	capabilities: [
 		{
 			index: "01",
-			title: "AI application systems",
+			title: "Generative AI integration",
 			description:
-				"LLM/VLM applications, agent workflows, tool calling, prompt and context design, and online/offline model routing.",
-			evidence: "Baidu media-monitoring Agent · GPT-4o / DeepSeek-V3 · llama.cpp",
-			tags: ["Agents", "LLM/VLM", "Evaluation"],
+				"Image and video models wired into a production canvas with gateway routing, pricing, and refunds; LLM generation grounded in real data; multi-agent workflows and tool schemas.",
+			evidence: "Astorie · 4 generation models · public /v1 SDKs · Baidu 8 workflows / 41 tools",
+			tags: ["Model integration", "LLM grounding", "Agents"],
 		},
 		{
 			index: "02",
-			title: "Full-stack engineering",
+			title: "Reliable production systems",
 			description:
-				"React and TypeScript interfaces connected to APIs, data workflows, cloud infrastructure, authentication, and application logging.",
-			evidence: "React · Python · FastAPI · AWS Lambda · DynamoDB · S3",
-			tags: ["React", "Python", "AWS"],
+				"Idempotent billing and refunds, atomic admission, versioned publishing, and large migrations that keep history, redirects, and a recovery path.",
+			evidence: "27,822-URL migration · 27K+ page pipeline · 48 → 1 queries per page",
+			tags: ["PostgreSQL", "Next.js", "Payload"],
 		},
 		{
 			index: "03",
-			title: "Technical product execution",
+			title: "Agent-driven delivery",
 			description:
-				"ToB product ownership grounded in system architecture, functional prototypes, API behavior, and cross-functional delivery.",
-			evidence: "Baidu · 4 enterprise POCs · 8 Agent workflows · 41 tools",
-			tags: ["PRDs", "Prototypes", "POCs"],
+				"Parallel Claude Code and Codex agents in isolated worktrees, reusable skills for repeated workflows, and release gates so speed never costs reliability.",
+			evidence: "80+ merged PRs in 9 weeks, part-time",
+			tags: ["Claude Code", "Codex", "Worktrees"],
 		},
 	],
 
 	caseStudies: [
 		{
 			index: "01",
-			label: "Baidu AI Cloud · Hogee",
-			title: "Iterating a ToB media-monitoring SaaS and planning its Agent experience.",
-			timeframe: "May 2026 — Present",
-			role: "AI Product Manager Intern, Hogee",
+			label: "Astorie · StoryFlow AI",
+			title: "Shipping generative AI features to a production video canvas, fast and safely.",
+			timeframe: "Aug 2026 — Present",
+			role: "Full Stack Engineer, Part-Time",
 			summary:
-				"A ToB media-monitoring SaaS inside Baidu AI Cloud's multi-agent digital-employee platform. My scope covers iteration of the core GUI product and planning its LUI-based Agent experience around the same monitoring capabilities.",
+				"Astorie is an agentic canvas where creative teams make cinematic AI videos with 100+ models. I work across the generation backend, the canvas, the public API, and the content platform behind astorie.ai.",
 			metrics: [
-				{ value: "50K+", label: "content items processed daily" },
-				{ value: "60+", label: "monitoring sources" },
-				{ value: "8", label: "business workflows" },
-				{ value: "41", label: "Agent tools" },
+				{ value: "80+", label: "merged PRs in 9 weeks, part-time" },
+				{ value: "4", label: "image/video generation models integrated" },
+				{ value: "27K+", label: "prompt pages published by pipeline" },
+				{ value: "27,822", label: "URLs migrated with 301 redirects" },
 			],
-			impactLabel: "Product scope & scale",
+			impactLabel: "Shipped output",
 			focusSections: [
 				{
-					title: "SaaS iteration & Agent planning",
+					title: "Generative AI & developer platform",
 					items: [
-						"Worked on iteration and delivery of the core GUI-based SaaS, supporting four enterprise POCs across brand, product, campaign, and competitor use cases.",
-						"Planned the LUI-based Agent as a conversational interface to the same product capabilities, mapping user intents to 8 business workflows and specifying 41 tools.",
+						"Integrated Nano Banana 2.1, FLUX 3, Seedance 2.5 Draft, and Video Depth Anything with gateway routing, pricing, and refunds, then moved new models to a single declaration instead of per-model branches.",
+						"Packaged generation into JavaScript and Python SDKs for the public /v1 API, covering file upload, capability discovery, retries, and idempotency keys, with CI end-to-end suites against a mock server.",
+					],
+				},
+				{
+					title: "Reliability & scale",
+					items: [
+						"Fixed charge/output mismatches by splitting multi-image requests into independent ordered jobs with idempotent refunds, and made gateway admission atomic to stop duplicate capacity reservations.",
+						"Rebuilt the content platform on Next.js, Payload, and PostgreSQL with 18-language editing and background AI translation, plus an ingestion pipeline with daily incremental sync.",
+					],
+				},
+			],
+			stack: ["TypeScript", "Next.js", "PostgreSQL", "Payload CMS", "Vercel", "GitHub Actions", "Claude Code / Codex"],
+			links: [
+				{ label: "astorie.ai", href: "https://astorie.ai" },
+				{ label: "Prompt Library", href: "https://astorie.ai/prompt-library" },
+				{ label: "AI Tools", href: "https://astorie.ai/tools" },
+			],
+			images: ["/astorie-home.jpg", "/astorie-prompt-library.jpg", "/astorie-tool-page.jpg"],
+			imageSlots: 3,
+			imagePlaceholder: "Add Astorie product screens here",
+		},
+		{
+			index: "02",
+			label: "Baidu AI Cloud · Hogee",
+			title: "Designing multi-agent workflows and tool schemas for an enterprise SaaS.",
+			timeframe: "May 2026 — Sep 2026",
+			role: "AI Product Manager Intern, Hogee",
+			summary:
+				"Hogee is an enterprise social-listening SaaS on Baidu AI Cloud's multi-agent platform. I designed how its Agent maps user intent to business workflows and API-backed tools, and owned planning through delivery.",
+			metrics: [
+				{ value: "8", label: "multi-agent workflows" },
+				{ value: "41", label: "API-backed tools specified" },
+				{ value: "~50K", label: "content items processed daily" },
+				{ value: "80+", label: "monitoring sources" },
+			],
+			impactLabel: "System scope & scale",
+			focusSections: [
+				{
+					title: "Agent system design",
+					items: [
+						"Designed 8 multi-agent workflows and input/output schemas for 41 API-backed tools, covering intent mapping, business-object resolution, permissions, confirmation, readback, and failure handling.",
+						"Authored 14 PRDs (130+ requirements) and drove 6 initiatives to release; supported 5 POCs and two RMB 1M+ contracts.",
 					],
 				},
 				{
 					title: "Technical validation",
 					items: [
-						"Developed a Python API validation tool with time-window partitioning, rate limits, retries, incremental JSON persistence, and keyword-level volume and failure aggregation.",
+						"Built a Python API validation pipeline that partitioned requests by date window, enforced rate limits, retried failures, and checkpointed results for keyword-level analysis of delayed and missing data.",
 						"Built functional React prototypes with mock API payloads to validate complex states and multi-step workflows before implementation.",
 					],
 				},
 			],
-			stack: ["React", "TypeScript", "Python", "APIs", "Postman", "Agent / tool calling"],
+			stack: ["Python", "React", "TypeScript", "REST APIs", "Agent / tool calling"],
 			images: ["/hogee-product-landing.png", "/hogee-agent-marketplace.png"],
 			imageSlots: 2,
 			imagePlaceholder: "Add Hogee screenshots, flow maps, or Agent UI here",
 		},
 		{
-			index: "02",
+			index: "03",
 			label: "Shangping · 熵评",
-			title: "Building a multi-tenant AI content system for restaurant reviews.",
+			title: "Grounding LLM generation in real restaurant data.",
 			timeframe: "May 2025 — Aug 2025",
 			role: "Founder & Full-Stack Engineer",
 			summary:
@@ -92,17 +133,17 @@ const PORTFOLIO = {
 			impactLabel: "System scope & results",
 			focusSections: [
 				{
-					title: "Engineering",
+					title: "AI system design",
 					items: [
-						"Built a metadata-driven multi-tenant React architecture so restaurant-specific branding, menus, tags, content, and routing could be configured without separate codebases.",
-						"Deployed the application with API Gateway, AWS Lambda, DynamoDB, and S3, with tenant configuration reducing new-restaurant setup to about five minutes.",
+						"Grounded DeepSeek-V3 generation in restaurant metadata, dish attributes, and each diner's selections, and used 70 curated few-shot reviews to avoid unsupported dish claims.",
+						"Translated findings from roughly 15 diner and 2 owner interviews into structured dish, tag, and rating inputs instead of an open-ended chat.",
 					],
 				},
 				{
-					title: "AI system design",
+					title: "Engineering",
 					items: [
-						"Designed a DeepSeek-V3 prompt and context pipeline combining restaurant metadata, dish attributes, structured user selections, and 70 curated few-shot reviews.",
-						"Translated findings from roughly 15 diner and 2 owner interviews into structured dish, tag, and rating inputs that generate editable platform-specific content.",
+						"Built a metadata-driven multi-tenant React architecture so restaurant-specific branding, menus, tags, content, and routing could be configured without separate codebases.",
+						"Deployed with API Gateway, AWS Lambda, DynamoDB, and S3; tenant configuration cut new-restaurant setup to about five minutes.",
 					],
 				},
 			],
@@ -117,7 +158,7 @@ const PORTFOLIO = {
 			imagePlaceholder: "Add 熵评 product screens, user flow, or restaurant pilot photos here",
 		},
 		{
-			index: "03",
+			index: "04",
 			label: "InnoSpire · WPI MQP",
 			title: "Designing a dual-mode AI accessibility application.",
 			timeframe: "Aug 2024 — May 2025",
@@ -157,51 +198,51 @@ const PORTFOLIO = {
 	thinking: [
 		{
 			index: "01",
-			title: "Define",
-			text: "Translate enterprise needs into explicit product boundaries, use cases, and deliverable workflows.",
-			evidence: "Baidu: 4 enterprise POCs across brand, product, campaign, and competitor use cases",
+			title: "Parallelize",
+			text: "Split work into independent tickets and run Claude Code and Codex agents in isolated git worktrees, so several changes move forward without stepping on each other.",
+			evidence: "Astorie: 80+ merged PRs in 9 weeks, part-time",
 		},
 		{
 			index: "02",
-			title: "Structure",
-			text: "Translate customer and product needs into PRDs, functional prototypes, and system boundaries.",
-			evidence: "Baidu: PRDs, React prototypes, collection / analysis architecture",
+			title: "Specify",
+			text: "Write the plan before the code: scope, acceptance criteria, rollout order, and what stays out. Agents work best against an explicit contract.",
+			evidence: "Astorie: launch plans for model integrations and the public SDKs",
 		},
 		{
 			index: "03",
-			title: "Orchestrate",
-			text: "Define intent mapping, business-object resolution, permissions, confirmation, readback, and failure handling.",
-			evidence: "Baidu: 8 workflows and 41 tools",
+			title: "Gate",
+			text: "Every release passes tests, Preview acceptance with real generations, and production smoke checks; risky migrations are rehearsed on a production-derived copy first.",
+			evidence: "Astorie: 27,822-URL migration; billing fixes verified with real refunds",
 		},
 		{
 			index: "04",
-			title: "Validate",
-			text: "Trace missing data and model-quality failures with validation tools, previews, and targeted checks.",
-			evidence: "Baidu: API validation, query previews, anomaly tracing",
+			title: "Automate",
+			text: "Turn repeated work into reusable agent skills, so the next run is faster and more consistent than the last.",
+			evidence: "CMS page-publishing skill · daily and weekly reports drafted from session history",
 		},
 	],
 
 	experience: [
 		{
-			timeframe: "May 2026 — Present",
+			timeframe: "Aug 2026 — Present",
+			company: "StoryFlow AI · Astorie",
+			role: "Full Stack Engineer, Part-Time",
+			location: "Remote",
+			focus: "Generative AI model integration, billing reliability, public SDKs, content platform",
+		},
+		{
+			timeframe: "May 2026 — Sep 2026",
 			company: "Baidu AI Cloud · Intelligent Marketing",
 			role: "AI Product Manager Intern, Hogee",
 			location: "Beijing, China",
-			focus: "ToB media-monitoring SaaS ownership, enterprise POCs, GUI and LUI experiences",
+			focus: "Multi-agent workflows, tool schemas, API validation, enterprise POCs",
 		},
 		{
 			timeframe: "May 2025 — Aug 2025",
 			company: "Shangping · 熵评",
 			role: "Founder & Full-Stack Engineer",
 			location: "Beijing, China",
-			focus: "Full-stack AWS architecture, multi-tenant React, AI content generation",
-		},
-		{
-			timeframe: "Jul 2024 — Aug 2024",
-			company: "AYCG, Inc.",
-			role: "Full-Stack Developer Intern",
-			location: "Remote",
-			focus: "React, FastAPI, JWT, MySQL, Alibaba Cloud",
+			focus: "Grounded LLM generation, multi-tenant React, AWS serverless",
 		},
 		{
 			timeframe: "Aug 2024 — May 2025",
@@ -209,6 +250,13 @@ const PORTFOLIO = {
 			role: "Project Lead & Full-Stack Application Developer",
 			location: "Worcester, MA",
 			focus: "React Native, dual-mode AI inference, accessibility engineering",
+		},
+		{
+			timeframe: "Jul 2024 — Aug 2024",
+			company: "AYCG, Inc.",
+			role: "Full-Stack Developer Intern",
+			location: "Remote",
+			focus: "React, FastAPI, JWT, MySQL, Alibaba Cloud",
 		},
 	],
 };

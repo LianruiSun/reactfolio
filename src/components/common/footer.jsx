@@ -11,21 +11,23 @@ import "./styles/footer.css";
 
 const FOOTER_COPY = {
 	en: {
-		tagline: "Engineer-first AI product builder",
+		tagline: "Turning generative AI into reliable production products",
 		navigate: "Navigate",
 		connect: "Connect",
 		contact: "Get in touch",
 		cta: "Let's build something useful together.",
+		pmResume: "Product management resume",
 		rights: "All rights reserved",
 		builtWith: "Built with React & Framer Motion",
 		nav: ["Home", "About", "Work", "Notes", "Contact"],
 	},
 	zh: {
-		tagline: "以工程能力构建 AI 产品",
+		tagline: "把生成式 AI 做成可靠的生产产品",
 		navigate: "导航",
 		connect: "关注",
 		contact: "联系我",
 		cta: "期待一起构建真正有用的产品。",
+		pmResume: "产品经理简历",
 		rights: "保留所有权利",
 		builtWith: "使用 React 与 Framer Motion 构建",
 		nav: ["首页", "关于", "项目", "文章", "联系"],
@@ -149,6 +151,9 @@ const Footer = () => {
 							{INFO.main.email}
 						</a>
 						<p className="footer-cta">{copy.cta}</p>
+					<a className="footer-secondary-link" href="/Darcy_Sun_PM.pdf" target="_blank" rel="noreferrer">
+						{copy.pmResume}
+					</a>
 					</motion.div>
 				</div>
 

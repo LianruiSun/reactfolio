@@ -2,14 +2,14 @@ const SEO = [
 	{
 		page: "home",
 		description:
-			"",
+			"Lianrui (Darcy) Sun is a software engineer who turns generative AI into reliable production products.",
 		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
 	},
 
 	{
 		page: "about",
 		description:
-			"During my time in college, I had a wide range of program experiences across many fields. Many of the projects solved real-world problems and facilitated and promoted development.",
+			"Software engineer at Astorie and NYU Courant M.S. student, turning generative AI into reliable production products with agent-driven delivery.",
 		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
 		},
 
@@ -23,7 +23,7 @@ const SEO = [
 	{
 		page: "projects",
 		description:
-			"Within the last few years, I have completed different projects in different areas. These projects have not only helped the world but also enhanced my learning and knowledge.",
+			"AI products at Astorie, Shangping, and InnoSpire, plus an archive of earlier web, data, desktop, and game projects.",
 		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
 		},
 

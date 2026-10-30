@@ -1,5 +1,27 @@
 const PROJECTS_ZH = [
 	{
+		title: "Astorie — AI 视频画布",
+		description: "在 Astorie 的生产级生成式 AI 工作：接入 4 个图像/视频生成模型（含 gateway 路由、定价与退款），为公开 /v1 API 构建 JavaScript 和 Python SDK，修复生成计费可靠性问题，并重建 astorie.ai 背后的内容平台。",
+		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/typescript/typescript.png",
+		linkText: "访问 astorie.ai",
+		link: "https://astorie.ai",
+	},
+	{
+		title: "熵评 — AI 餐饮点评 SaaS",
+		description: "基于 React 与 AWS Serverless 的多租户 SaaS，用餐厅信息、菜品特点和顾客选择约束 DeepSeek V3 生成点评。在 3 家餐厅试点，评论量达到试点前的约 2.8 倍。",
+		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/typescript/typescript.png",
+		linkText: "查看项目案例",
+		link: "/#selected-work",
+	},
+	{
+		title: "InnoSpire — 双模式 AI 视障辅助 App",
+		description: "面向视障用户的多语言 React Native 应用，在线使用 GPT-4o 理解场景，离线通过 llama.cpp 运行 YOLOv5 与 Phi-3 Mini。获 WPI 数据科学系杰出项目奖。",
+		logo: "InnoSpire.png",
+		linkText: "查看项目",
+		link: "https://www.linkedin.com/feed/update/urn:li:activity:7327949235172089856/",
+	},
+	{
+		archived: true,
 		title: "WPI 计算机科学专业进度追踪器",
 		description: "允许计算机科学专业学生上传课程记录，并查看各项专业与毕业要求的完成情况。系统解析 Excel 文件，将课程按要求分类，并计算毕业要求完成比例。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/typescript/typescript.png",
@@ -7,6 +29,7 @@ const PROJECTS_ZH = [
 		link: "https://www.youtube.com/watch?v=1XyqxNSywzM",
 	},
 	{
+		archived: true,
 		title: "WPI 健康教室监测网站",
 		description: "通过 Awair Omni 传感器监测 WPI 十间教室的温度、空气质量、湿度、噪声和照明，并结合学生问卷建立动态教室健康评分数据库，通过网站实时展示数据。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/typescript/typescript.png",
@@ -14,6 +37,7 @@ const PROJECTS_ZH = [
 		link: "https://lianruisun.shinyapps.io/WPIClassroomDashboard/",
 	},
 	{
+		archived: true,
 		title: "医院桌面应用开发",
 		description: "与 Mass General Brigham 合作，使用 Java、Scene Builder、CSS 和 MySQL 开发医院桌面应用。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
@@ -21,6 +45,7 @@ const PROJECTS_ZH = [
 		link: "https://github.com/orgs/CS3733-D23-Team-N/ ",
 	},
 	{
+		archived: true,
 		title: "个人游戏开发（2022）",
 		description: "使用 Unity 和 C# 开发带有战斗元素的 2D 平台游戏。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
@@ -28,6 +53,7 @@ const PROJECTS_ZH = [
 		link: "https://darrrrrrrrrcy.itch.io/darcys-first-game",
 	},
 	{
+		archived: true,
 		title: "大众点评网页爬虫（2022）",
 		description: "使用 Python 与 BeautifulSoup 抓取大众点评用户数据和评论，分析用户位置与人均消费，并将结果提供给当地餐厅。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/python/python.png",

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { faArrowDown, faArrowRight, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faArrowDown, faArrowRight, faArrowUpRightFromSquare, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -16,27 +16,27 @@ import "./styles/homepage.css";
 
 const UI_COPY = {
 	en: {
-		pageTitle: "Darcy Sun — Software Engineer & AI Product Builder",
-		metaDescription: "Lianrui (Darcy) Sun is a software engineer building full-stack AI applications, with product management experience owning a ToB media-monitoring SaaS across GUI and LUI Agent experiences at Baidu AI Cloud.",
+		pageTitle: "Darcy Sun — Software Engineer, AI Applications",
+		metaDescription: "Lianrui (Darcy) Sun is a software engineer who turns generative AI into reliable production products, currently shipping model integrations, billing reliability, and developer SDKs at Astorie.",
 		current: "Currently",
 		explore: "Explore selected work",
-		resume: "SDE resume",
+		resume: "Resume",
 		selectedWork: "Selected work",
 		caseStudies: "case studies",
-		workDescription: "Engineering-led work across full-stack AI systems, complemented by ownership of a ToB media-monitoring SaaS at Baidu AI Cloud.",
+		workDescription: "Four projects, one thread: getting generative AI into real products and keeping it reliable once it is there.",
 		case: "Case",
+		liveProduct: "Live product",
 		experienceEyebrow: "02 / Experience",
 		experience: "Experience",
-		experienceDescription: "A software engineering path complemented by hands-on ownership of an enterprise AI product at Baidu.",
+		experienceDescription: "From full-stack engineering to production AI systems, with hands-on product ownership along the way.",
 		rangeEyebrow: "03 / Working range",
-		rangeTitle: "Engineering first, informed by product ownership.",
+		rangeTitle: "Fast with agents, careful in production.",
 		rangeDescription: "These capabilities are grounded in the work above, not presented as standalone claims.",
-		practiceEyebrow: "04 / Technical product practice",
-		practiceTitle: "Product decisions grounded in system behavior.",
-		practiceDescription: "My Baidu work adds a ToB product lens to an engineering foundation: iterate the core GUI SaaS, translate its capabilities into an LUI Agent experience, prototype key states, and validate the data path.",
-		resumeEyebrow: "Two ways to go deeper",
-		resumeTitle: "Explore the work from an engineering or product lens.",
-		pmResume: "PM resume",
+		practiceEyebrow: "04 / How I ship",
+		practiceTitle: "Agents for speed, release gates for reliability.",
+		practiceDescription: "Most of my code is written with parallel coding agents. What makes that safe is the process around them: explicit plans, isolated changes, and checks that every release has to pass.",
+		resumeEyebrow: "Resume",
+		resumeTitle: "The one-page version of everything above.",
 		image: "Image",
 		primaryVisual: "primary visual",
 		productScreen: "product screen",
@@ -45,27 +45,27 @@ const UI_COPY = {
 		social: { github: "GitHub Profile", linkedin: "LinkedIn Profile", email: "Email me" },
 	},
 	zh: {
-		pageTitle: "Darcy Sun — 软件工程师与 AI 产品构建者",
-		metaDescription: "孙镰瑞（Darcy Sun）专注于全栈 AI 应用，目前在百度智能云负责 Hogee 企业舆情监测 SaaS 及其 Agent 工作流。",
+		pageTitle: "Darcy Sun — 软件工程师｜AI 应用",
+		metaDescription: "孙镰瑞（Darcy Sun）是把生成式 AI 做成可靠生产产品的软件工程师，目前在 Astorie 负责模型接入、计费可靠性和开发者 SDK。",
 		current: "当前",
 		explore: "查看代表项目",
-		resume: "工程简历",
+		resume: "简历",
 		selectedWork: "代表项目",
 		caseStudies: "个项目案例",
-		workDescription: "用三个项目说明我如何把工程实现、模型能力与产品判断连接起来。",
+		workDescription: "四个项目，一条主线：把生成式 AI 放进真实产品，并让它上线后依然可靠。",
 		case: "案例",
+		liveProduct: "产品链接",
 		experienceEyebrow: "02 / 工作经历",
 		experience: "工作经历",
-		experienceDescription: "从全栈工程与 AI 应用开发，到企业 AI 产品设计与交付。",
-		rangeEyebrow: "03 / 技术与产品能力",
-		rangeTitle: "既能把系统做出来，也能判断 AI 应该用在哪里。",
-		rangeDescription: "这些能力都来自真实项目中的设计、开发、验证与交付。",
-		practiceEyebrow: "04 / AI 产品方法",
-		practiceTitle: "关键不是接入一个模型，而是设计一条可验证的完整链路。",
-		practiceDescription: "从场景拆解和交互选型开始，明确平台计算、模型生成与人工确认的边界，再通过数据、证据和 Bad Case 持续验证。",
-		resumeEyebrow: "两份简历",
-		resumeTitle: "从工程与 AI 产品两个角度了解我的完整经历。",
-		pmResume: "产品简历",
+		experienceDescription: "从全栈工程到生产级 AI 系统，过程中也亲手负责过产品。",
+		rangeEyebrow: "03 / 能力范围",
+		rangeTitle: "用 Agent 求快，在生产上求稳。",
+		rangeDescription: "这些能力都来自上面项目中的真实设计、开发、验证与交付。",
+		practiceEyebrow: "04 / 我如何交付",
+		practiceTitle: "Agent 负责速度，上线关卡负责可靠。",
+		practiceDescription: "我的大部分代码由并行的编程 Agent 完成。让这件事可靠的是它周围的流程：明确的方案、隔离的改动，以及每次上线都必须通过的检查。",
+		resumeEyebrow: "简历",
+		resumeTitle: "上面所有内容的一页版本。",
 		image: "图片",
 		primaryVisual: "主视觉",
 		productScreen: "产品界面",
@@ -167,6 +167,17 @@ const CaseStudy = ({ study, ui }) => (
 				<div className="case-study-stack">
 					{study.stack.map((item) => <span key={item}>{item}</span>)}
 				</div>
+
+				{study.links?.length > 0 && (
+					<div className="case-study-links">
+						<span>{ui.liveProduct}</span>
+						{study.links.map((link) => (
+							<a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+								{link.label} <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+							</a>
+						))}
+					</div>
+				)}
 			</div>
 			<CaseStudyVisual study={study} ui={ui} />
 		</div>
@@ -179,7 +190,15 @@ const Homepage = () => {
 	const ui = UI_COPY[language];
 
 	useEffect(() => {
-		window.scrollTo(0, 0);
+		if (!window.location.hash) {
+			window.scrollTo(0, 0);
+			return undefined;
+		}
+		// Wait for the lazy-loaded page and its entrance animations to settle before jumping to the anchor.
+		const timer = window.setTimeout(() => {
+			document.querySelector(window.location.hash)?.scrollIntoView({ behavior: "instant", block: "start" });
+		}, 300);
+		return () => window.clearTimeout(timer);
 	}, []);
 
 	return (
@@ -190,7 +209,7 @@ const Homepage = () => {
 					name="description"
 					content={ui.metaDescription}
 				/>
-				<meta name="keywords" content="Darcy Sun, Lianrui Sun, Software Engineer, AI Product, Agent, React, TypeScript" />
+				<meta name="keywords" content="Darcy Sun, Lianrui Sun, Software Engineer, AI Applications, Generative AI, Agents, Next.js, TypeScript" />
 			</Helmet>
 
 			<div className="page-content enhanced-homepage">
@@ -316,7 +335,6 @@ const Homepage = () => {
 							<div><p className="eyebrow">{ui.resumeEyebrow}</p><h2>{ui.resumeTitle}</h2></div>
 							<div className="resume-actions">
 								<a className="button button-primary" href="/Darcy_Sun_SDE.pdf" target="_blank" rel="noreferrer">{ui.resume} <FontAwesomeIcon icon={faArrowDown} /></a>
-								<a className="button button-secondary" href="/Darcy_Sun_PM.pdf" target="_blank" rel="noreferrer">{ui.pmResume} <FontAwesomeIcon icon={faArrowDown} /></a>
 							</div>
 						</div>
 					</section>

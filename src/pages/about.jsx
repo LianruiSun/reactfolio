@@ -18,13 +18,13 @@ const About = () => {
 	const copy = language === "zh"
 		? {
 			heading: "关于我",
-			subtitle: "以工程能力构建可靠、真正解决问题的产品",
-			title: "我是孙镰瑞，目前在纽约大学攻读计算机科学硕士。",
-			description: "我的经历横跨全栈工程、AI 应用开发与企业 AI 产品。作为工程师，我独立构建过多租户餐饮 SaaS，也带领团队完成过结合云端视觉大模型与端侧小模型的视障辅助 App；作为产品经理，我目前在百度智能云负责 Hogee 舆情分析数字员工，推进 GUI SaaS、LUI、报告生成和 Bad Case 迭代。我关注的不只是模型能做什么，更关心它如何进入真实业务流程，并形成可验证、可交付的产品。",
+			subtitle: "把生成式 AI 做成可靠的生产产品",
+			title: "我是孙镰瑞（Darcy Sun），在纽约攻读计算机科学硕士的软件工程师。",
+			description: "我在纽约大学攻读计算机科学硕士，同时在 AI 视频画布 Astorie 兼职担任全栈工程师：接入图像和视频生成模型、保证生成计费正确、构建公开 SDK，并维护 astorie.ai 背后的内容平台。在此之前，我在百度智能云设计多 Agent 工作流，创办过 AI 餐饮点评 SaaS，也在 WPI 带队完成了双模式 AI 视障辅助 App。我的大部分代码由并行的编程 Agent 完成，再用方案、测试和上线检查保证这种速度是可靠的。",
 		}
 		: {
 			heading: "About Me",
-			subtitle: "Passionate developer dedicated to creating innovative solutions",
+			subtitle: "Turning generative AI into reliable production products",
 			title: INFO.about.title,
 			description: INFO.about.description,
 		};

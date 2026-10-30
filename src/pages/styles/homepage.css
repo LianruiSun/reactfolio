@@ -470,6 +470,44 @@
 	color: var(--secondary-color);
 }
 
+.case-study-links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 16px;
+	margin-top: 18px;
+	padding-top: 16px;
+	border-top: 1px solid var(--border-subtle);
+}
+
+.case-study-links span {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--tertiary-color);
+}
+
+.case-study-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--primary-color);
+	text-decoration: none;
+	border-bottom: 1px solid var(--border);
+	transition: border-color var(--transition-fast);
+}
+
+.case-study-links a:hover {
+	border-bottom-color: var(--primary-color);
+}
+
+.case-study-links svg {
+	font-size: 0.7em;
+}
+
 .case-study-visual {
 	display: grid;
 	grid-template-columns: 1fr;
@@ -516,6 +554,12 @@
 	object-fit: cover;
 	object-position: center;
 	background: var(--surface);
+}
+
+.case-study-visual img[src^="/astorie-"] {
+	object-fit: cover;
+	object-position: top center;
+	background: #0b0b0c;
 }
 
 .case-study-visual img[src$="/shangping-platform-selection.png"],

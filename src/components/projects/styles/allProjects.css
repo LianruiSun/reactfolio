@@ -18,3 +18,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+.all-projects-group-title {
+	margin: 0 0 16px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--secondary-color);
+}
+
+.all-projects-group-archive {
+	margin-top: 48px;
+	color: var(--tertiary-color);
+}
