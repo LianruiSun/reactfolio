@@ -1,38 +1,44 @@
-const SEO = [
-	{
-		page: "home",
-		description:
-			"Lianrui (Darcy) Sun is a software engineer who turns generative AI into reliable production products.",
-		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
+const SEO = {
+	about: {
+		en: {
+			title: "About",
+			description: "Darcy (Lianrui) Sun is a software engineer and NYU Courant M.S. student who turns generative AI into reliable production products.",
+		},
+		zh: {
+			title: "关于",
+			description: "孙镰瑞（Darcy Sun）是纽约大学计算机科学硕士在读的软件工程师，专注把生成式 AI 做成可靠的生产产品。",
+		},
 	},
-
-	{
-		page: "about",
-		description:
-			"Software engineer at Astorie and NYU Courant M.S. student, turning generative AI into reliable production products with agent-driven delivery.",
-		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
+	projects: {
+		en: {
+			title: "Projects",
+			description: "AI products by Darcy Sun, including Astorie, HumanOverride, Shangping, and InnoSpire, plus an archive of earlier web, data, and desktop projects.",
 		},
-
-	{
-		page: "articles",
-		description:
-			"I am passionate about exploring the boundaries of knowledge, and using my knowledge and skills to bring innovation.",
-		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
+		zh: {
+			title: "项目",
+			description: "Darcy Sun 的 AI 产品项目，包括 Astorie、转人工、熵评和 InnoSpire，以及早期的 Web、数据和桌面应用项目存档。",
 		},
-
-	{
-		page: "projects",
-		description:
-			"AI products at Astorie, Shangping, and InnoSpire, plus an archive of earlier web, data, desktop, and game projects.",
-		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
+	},
+	articles: {
+		en: {
+			title: "Notes",
+			description: "Writing and project notes by Darcy Sun on AI applications, accessibility, and building software that solves real problems.",
 		},
-
-	{
-		page: "contact",
-		description:
-			"If you're interested in collaborating on a project, feel free to reach out to me. I'm always open to new ideas and opportunities.",
-		keywords: ["Lianrui", "Lianrui Sun", "Darcy Sun"],
+		zh: {
+			title: "文章",
+			description: "Darcy Sun 关于 AI 应用、无障碍技术和软件工程实践的文章与项目记录。",
 		},
-];
+	},
+	contact: {
+		en: {
+			title: "Contact",
+			description: "Get in touch with Darcy (Lianrui) Sun about software engineering, AI applications, and collaboration.",
+		},
+		zh: {
+			title: "联系",
+			description: "联系孙镰瑞（Darcy Sun），交流软件工程、AI 应用和合作机会。",
+		},
+	},
+};
 
 export default SEO;

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import Seo from "../components/common/seo";
 import { faArrowDown, faArrowRight, faArrowUpRightFromSquare, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ import "./styles/homepage.css";
 
 const UI_COPY = {
 	en: {
-		pageTitle: "Darcy Sun — Software Engineer, AI Applications",
+		pageTitle: "Darcy (Lianrui) Sun — Software Engineer, AI Applications",
 		metaDescription: "Lianrui (Darcy) Sun is a software engineer who turns generative AI into reliable production products, currently shipping model integrations, billing reliability, and developer SDKs at Astorie.",
 		current: "Currently",
 		explore: "Explore selected work",
@@ -45,7 +45,7 @@ const UI_COPY = {
 		social: { github: "GitHub Profile", linkedin: "LinkedIn Profile", email: "Email me" },
 	},
 	zh: {
-		pageTitle: "Darcy Sun — 软件工程师｜AI 应用",
+		pageTitle: "孙镰瑞（Darcy Sun）— 软件工程师｜AI 应用",
 		metaDescription: "孙镰瑞（Darcy Sun）是把生成式 AI 做成可靠生产产品的软件工程师，目前在 Astorie 负责模型接入、计费可靠性和开发者 SDK。",
 		current: "当前",
 		explore: "查看代表项目",
@@ -203,14 +203,7 @@ const Homepage = () => {
 
 	return (
 		<>
-			<Helmet>
-				<title>{ui.pageTitle}</title>
-				<meta
-					name="description"
-					content={ui.metaDescription}
-				/>
-				<meta name="keywords" content="Darcy Sun, Lianrui Sun, Software Engineer, AI Applications, Generative AI, Agents, Next.js, TypeScript" />
-			</Helmet>
+			<Seo fullTitle={ui.pageTitle} description={ui.metaDescription} path="/" />
 
 			<div className="page-content enhanced-homepage">
 				<NavBar active="home" />

@@ -19,7 +19,7 @@ const FOOTER_COPY = {
 		pmResume: "Product management resume",
 		rights: "All rights reserved",
 		builtWith: "Built with React & Framer Motion",
-		nav: ["Home", "About", "Work", "Notes", "Contact"],
+		nav: ["Home", "About", "Work", "Games", "Notes", "Contact"],
 	},
 	zh: {
 		tagline: "把生成式 AI 做成可靠的生产产品",
@@ -30,7 +30,7 @@ const FOOTER_COPY = {
 		pmResume: "产品经理简历",
 		rights: "保留所有权利",
 		builtWith: "使用 React 与 Framer Motion 构建",
-		nav: ["首页", "关于", "项目", "文章", "联系"],
+		nav: ["首页", "关于", "项目", "游戏", "文章", "联系"],
 	},
 };
 
@@ -89,10 +89,13 @@ const Footer = () => {
 								<Link to="/projects">{copy.nav[2]}</Link>
 							</li>
 							<li>
-								<Link to="/articles">{copy.nav[3]}</Link>
+								<Link to="/games">{copy.nav[3]}</Link>
+						</li>
+						<li>
+							<Link to="/articles">{copy.nav[4]}</Link>
 							</li>
 							<li>
-								<Link to="/contact">{copy.nav[4]}</Link>
+								<Link to="/contact">{copy.nav[5]}</Link>
 							</li>
 						</ul>
 					</motion.div>

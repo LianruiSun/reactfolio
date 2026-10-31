@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
 
 import NavBar from "../components/common/navBar";
 
-import INFO from "../data/user";
+import Seo from "../components/common/seo";
 import { useLanguage } from "../contexts/languageContext";
 
 import "./styles/404.css";
 
 const Notfound = () => {
 	const { language } = useLanguage();
-	useEffect(() => {
-		document.title = `404 | ${INFO.main.title}`;
-	}, [language]);
 
 	return (
 		<React.Fragment>
+			<Seo
+				title="404"
+				description={language === "zh" ? "页面未找到。" : "This page could not be found."}
+				path={window.location.pathname}
+				noindex
+			/>
 			<div className="not-found page-content">
 				<NavBar />
 				<div className="content-wrapper">

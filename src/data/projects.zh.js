@@ -7,6 +7,13 @@ const PROJECTS_ZH = [
 		link: "https://astorie.ai",
 	},
 	{
+		title: "转人工 — 本地小语言模型游戏",
+		description: "把 2.6 GB 小语言模型直接打包进成品的桌面游戏。模型作为受语法约束的裁判，判定玩家自由组句的回复，可在 CUDA、Vulkan 和 CPU 上离线运行，宏平均正确率 90.4%。",
+		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
+		linkText: "查看模型设计",
+		link: "/games",
+	},
+	{
 		title: "熵评 — AI 餐饮点评 SaaS",
 		description: "基于 React 与 AWS Serverless 的多租户 SaaS，用餐厅信息、菜品特点和顾客选择约束 DeepSeek V3 生成点评。在 3 家餐厅试点，评论量达到试点前的约 2.8 倍。",
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/typescript/typescript.png",
@@ -43,14 +50,6 @@ const PROJECTS_ZH = [
 		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 		linkText: "查看项目",
 		link: "https://github.com/orgs/CS3733-D23-Team-N/ ",
-	},
-	{
-		archived: true,
-		title: "个人游戏开发（2022）",
-		description: "使用 Unity 和 C# 开发带有战斗元素的 2D 平台游戏。",
-		logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
-		linkText: "查看项目",
-		link: "https://darrrrrrrrrcy.itch.io/darcys-first-game",
 	},
 	{
 		archived: true,

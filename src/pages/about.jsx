@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import Seo from "../components/common/seo";
 import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
@@ -32,18 +32,10 @@ const About = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const currentSEO = SEO.find((item) => item.page === "about");
 
 	return (
 		<React.Fragment>
-			<Helmet>
-				<title>{`${language === "zh" ? "关于" : "About"} | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
+			<Seo {...SEO.about[language]} path="/about" />
 
 			<div className="page-content about-page">
 				<NavBar active="about" />
@@ -91,7 +83,7 @@ const About = () => {
 									>
 										<img
 											src="about.jpg"
-											alt="about"
+											alt="A grey cat resting by a window"
 											className="about-image"
 										/>
 									</motion.div>

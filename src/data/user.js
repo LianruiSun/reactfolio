@@ -110,6 +110,14 @@ const INFO = {
 			link: "https://astorie.ai",
 		},
 		{
+			title: "HumanOverride — Local Small Language Model Game",
+			description:
+				"A desktop game that ships a 2.6 GB small language model inside the build. The model acts as a grammar-constrained referee for free-form player replies, running offline across CUDA, Vulkan, and CPU with 90.4% macro accuracy.",
+			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
+			linkText: "See the model design",
+			link: "/games",
+		},
+		{
 			title: "Shangping — AI Restaurant Review SaaS",
 			description:
 				"A multi-tenant React and AWS serverless SaaS that drafts restaurant reviews with DeepSeek-V3, grounded in restaurant metadata, dish attributes, and each diner's selections. Piloted at 3 restaurants with review volume reaching ~2.8× pre-pilot levels.",
@@ -152,16 +160,6 @@ const INFO = {
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "View Project",
 			link: "https://github.com/orgs/CS3733-D23-Team-N/ ",
-		},
-
-		{
-			archived: true,
-			title: "Personal Game development (2022)",
-			description:
-				"A platformer 2D game with fighting elements using Unity and C#.",
-			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos@0.0.3/src/csharp/csharp.png",
-			linkText: "View Project",
-			link: "https://darrrrrrrrrcy.itch.io/darcys-first-game",
 		},
 
 		{

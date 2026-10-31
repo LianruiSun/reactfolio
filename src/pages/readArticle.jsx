@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import Seo from "../components/common/seo";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 
-import INFO from "../data/user";
+import Notfound from "./404";
 import myArticles from "../data/articles";
 import { useLanguage } from "../contexts/languageContext";
 
@@ -26,17 +26,22 @@ useEffect(() => {
 window.scrollTo(0, 0);
 }, [article]);
 
+if (!article) {
+return <Notfound />;
+}
+
 ArticleStyle = styled.div`
 ${article(language).style}
 `;
 
 return (
 <React.Fragment>
-<Helmet>
-<title>{`${article(language).title} | ${INFO.main.title}`}</title>
-<meta name="description" content={article(language).description} />
-<meta name="keywords" content={article(language).keywords.join(", ")} />
-</Helmet>
+<Seo
+title={article(language).title}
+description={article(language).description}
+path={`/article/${slug}`}
+type="article"
+/>
 
 <div className="page-content read-article-page">
 <NavBar />

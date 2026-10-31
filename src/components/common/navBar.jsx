@@ -10,6 +10,7 @@ const NAV_COPY = {
 		home: "Home",
 		about: "About",
 		projects: "Work",
+		games: "Games",
 		articles: "Notes",
 		contact: "Contact",
 		menuLabel: "Toggle navigation menu",
@@ -19,6 +20,7 @@ const NAV_COPY = {
 		home: "首页",
 		about: "关于",
 		projects: "项目",
+		games: "游戏",
 		articles: "文章",
 		contact: "联系",
 		menuLabel: "展开或收起导航菜单",
@@ -30,6 +32,7 @@ const NAV_ITEMS = [
 	{ key: "home", to: "/" },
 	{ key: "about", to: "/about" },
 	{ key: "projects", to: "/projects" },
+	{ key: "games", to: "/games" },
 	{ key: "articles", to: "/articles" },
 	{ key: "contact", to: "/contact" },
 ];

@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import Seo from "../components/common/seo";
 import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
 import AllProjects from "../components/projects/allProjects";
-import { FadeIn, FloatingElement } from "../components/common/animationWrappers";
+import { FadeIn } from "../components/common/animationWrappers";
 
-import INFO from "../data/user";
 import SEO from "../data/seo";
 import { useLanguage } from "../contexts/languageContext";
 
@@ -30,18 +29,10 @@ const Projects = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const currentSEO = SEO.find((item) => item.page === "projects");
 
 	return (
 		<React.Fragment>
-			<Helmet>
-				<title>{`${language === "zh" ? "作品" : "Projects"} | ${INFO.main.title}`}</title>
-				<meta name="description" content={currentSEO.description} />
-				<meta
-					name="keywords"
-					content={currentSEO.keywords.join(", ")}
-				/>
-			</Helmet>
+			<Seo {...SEO.projects[language]} path="/projects" />
 
 			<div className="page-content projects-page">
 				<NavBar active="projects" />

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet";
+import Seo from "../components/common/seo";
 import { motion } from "framer-motion";
 
 import NavBar from "../components/common/navBar";
@@ -19,18 +19,10 @@ useEffect(() => {
 window.scrollTo(0, 0);
 }, []);
 
-const currentSEO = SEO.find((item) => item.page === "contact");
 
 return (
 <React.Fragment>
-<Helmet>
-<title>{`${language === "zh" ? "联系" : "Contact"} | ${INFO.main.title}`}</title>
-<meta name="description" content={currentSEO.description} />
-<meta
-name="keywords"
-content={currentSEO.keywords.join(", ")}
-/>
-</Helmet>
+<Seo {...SEO.contact[language]} path="/contact" />
 
 <div className="page-content contact-page">
 <NavBar active="contact" />
